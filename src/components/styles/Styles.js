@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@mui/styles";
 
-export const loginStyle = makeStyles({
+export const formStyle = makeStyles({
   display: {
     backgroundColor: "lightcoral",
     height: "100vh",
