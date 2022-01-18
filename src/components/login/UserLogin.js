@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { loginStyle } from "../styles/Styles";
 import Box from "@mui/material/Box";
+import CurrentUser from "../auth/CurrentUser";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
@@ -11,6 +12,11 @@ import Typography from "@mui/material/Typography";
 
 const UserLogin = () => {
   const login = loginStyle();
+
+  //Setting context
+  const { setCurrentUser, setHeaders, currentUser, headers } =
+    useContext(CurrentUser);
+
   //Declaring states for textfields value
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,7 +41,24 @@ const UserLogin = () => {
         password: password,
       },
     })
-      .then((res) => console.log(res))
+      .then((res) => {
+        setCurrentUser({
+          email: res.data.data.email,
+          first_name: res.data.data.first_name,
+          middle_name: res.data.data.middle_name,
+          last_name: res.data.data.last_name,
+          covid_status: res.data.data.covid_status,
+          role: res.data.data.role,
+        });
+
+        const { "access-token": token } = res.headers;
+        setHeaders({
+          token: token,
+          client: res.headers.client,
+          expiry: res.headers.expiry,
+          uid: res.headers.uid,
+        });
+      })
       .catch((err) => console.log(err));
   };
 
@@ -93,15 +116,27 @@ const UserLogin = () => {
                 Login
               </Button>
               <div className={login.optionsContainer}>
-              <Paper className={login.signupContainer} elevation={0}>
-                <Typography sx={{ paddingRight: "0.2rem" }}>
-                  Don't have an account yet?
-                </Typography>
-                <Link sx={{ cursor: "pointer", fontWeight: '500' }} underline="none">
-                  Sign up
+                <Paper className={login.signupContainer} elevation={0}>
+                  <Typography sx={{ paddingRight: "0.2rem" }}>
+                    Don't have an account yet?
+                  </Typography>
+                  <Link
+                    sx={{ cursor: "pointer", fontWeight: "500" }}
+                    underline="none"
+                  >
+                    Sign up
+                  </Link>
+                </Paper>
+                <Link
+                  sx={{
+                    marginTop: "2rem",
+                    fontWeight: "400",
+                    cursor: "pointer",
+                  }}
+                  underline="none"
+                >
+                  Forgot Password
                 </Link>
-              </Paper>
-              <Link sx={{marginTop: "2rem", fontWeight: '400', cursor: 'pointer'}} underline='none'>Forgot Password</Link>
               </div>
             </Paper>
           </Paper>
