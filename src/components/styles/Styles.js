@@ -3,8 +3,8 @@ import { makeStyles } from "@mui/styles";
 
 export const loginStyle = makeStyles({
   root: {
+    backgroundColor: "lightcoral",
     height: "100vh",
-    width: "100vw",
   },
   display: {
     backgroundColor: "lightcoral",
@@ -15,11 +15,24 @@ export const loginStyle = makeStyles({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    height: "70vh",
+    width: "30vw",
+    marginLeft: "15em",
+  },
+  formContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "start",
     height: "100vh",
   },
   signupContainer: {
     display: "flex",
     justifyContent: "center",
     marginTop: "2rem",
+  },
+  optionsContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    width: "80%",
   },
 });
