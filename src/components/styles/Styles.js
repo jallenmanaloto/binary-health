@@ -2,10 +2,6 @@ import React from "react";
 import { makeStyles } from "@mui/styles";
 
 export const loginStyle = makeStyles({
-  root: {
-    backgroundColor: "lightcoral",
-    height: "100vh",
-  },
   display: {
     backgroundColor: "lightcoral",
     height: "100vh",
@@ -15,15 +11,16 @@ export const loginStyle = makeStyles({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    height: "70vh",
-    width: "30vw",
-    marginLeft: "15em",
+    height: "50vh",
+    padding: "0",
+    marginBottom: "12em",
   },
   formContainer: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "start",
+    justifyContent: "center",
     height: "100vh",
+    width: "100vw",
   },
   signupContainer: {
     display: "flex",
@@ -32,7 +29,7 @@ export const loginStyle = makeStyles({
   },
   optionsContainer: {
     display: "flex",
-    justifyContent: "space-between",
-    width: "80%",
+    justifyContent: "center",
+    width: "100%",
   },
 });
