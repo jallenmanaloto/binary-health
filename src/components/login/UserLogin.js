@@ -68,81 +68,82 @@ const UserLogin = () => {
   };
 
   return (
-    <Box>
+    <div>
       <Grid container>
-        <Grid item sm={0} xl={4}>
-          <Paper sx={{ backgroundColor: "lightcoral", height: "100vh" }}>
-            hello
-          </Paper>
-        </Grid>
-        <Grid item sm={8} xl={8}>
-          <Paper className={login.formContainer} elevation={0}>
-            <Paper className={login.form}>
-              <Typography sx={{ paddingBottom: "2em" }} variant="h3">
-                BETELGEUSE
-              </Typography>
-              <Typography variant="h4">Welcome back</Typography>
-              <Typography
-                sx={{ fontSize: "1.1rem", paddingTop: "1rem" }}
-                variant="h5"
+        <Grid container item xl={12}>
+          <Paper
+            className={login.formContainer}
+            sx={{ backgroundColor: "#fcfcfc" }}
+            elevation={0}
+          >
+            <Grid item sm={8} md={4} xl={3}>
+              <Paper
+                sx={{ borderRadius: "12px", backgroundColor: "#fcfcfc" }}
+                className={login.form}
+                elevation={4}
               >
-                Login to your account.
-              </Typography>
-              <TextField
-                onChange={handleEmail}
-                onKeyDown={handleEnterKeyLogin}
-                value={email}
-                sx={{
-                  paddingBottom: "1.2rem",
-                  marginTop: "2.7em",
-                  width: "80%",
-                }}
-                label="Email"
-                variant="outlined"
-              />
-              <TextField
-                onChange={handlePassword}
-                onKeyDown={handleEnterKeyLogin}
-                value={password}
-                sx={{ paddingBottom: "1.2rem", width: "80%" }}
-                label="Password"
-                variant="outlined"
-              />
-              <Button
-                onClick={handleLogin}
-                sx={{ height: "3.2em", fontWeight: "bold", width: "80%" }}
-                variant="contained"
-              >
-                Login
-              </Button>
-              <div className={login.optionsContainer}>
-                <Paper className={login.signupContainer} elevation={0}>
-                  <Typography sx={{ paddingRight: "0.2rem" }}>
-                    Don't have an account yet?
-                  </Typography>
-                  <Link
-                    sx={{ cursor: "pointer", fontWeight: "500" }}
-                    underline="none"
-                  >
-                    Sign up
-                  </Link>
-                </Paper>
-                <Link
-                  sx={{
-                    marginTop: "2rem",
-                    fontWeight: "400",
-                    cursor: "pointer",
-                  }}
-                  underline="none"
+                {/* <Typography sx={{ paddingBottom: "2em" }} variant="h3">
+                  BETELGEUSE
+                </Typography> */}
+                <Typography
+                  sx={{ fontWeight: "bold", color: "#4d4d4d" }}
+                  variant="h4"
                 >
-                  Forgot Password
-                </Link>
-              </div>
-            </Paper>
+                  Sign in
+                </Typography>
+                <TextField
+                  onChange={handleEmail}
+                  onKeyDown={handleEnterKeyLogin}
+                  value={email}
+                  sx={{
+                    paddingBottom: "1.2rem",
+                    marginTop: "2.7em",
+                    width: "80%",
+                    backgroundColor: "#fcfcfc",
+                  }}
+                  label="Email"
+                  variant="outlined"
+                />
+                <TextField
+                  onChange={handlePassword}
+                  onKeyDown={handleEnterKeyLogin}
+                  value={password}
+                  sx={{
+                    paddingBottom: "1.2rem",
+                    width: "80%",
+                    backgroundColor: "#fcfcfc",
+                  }}
+                  label="Password"
+                  variant="outlined"
+                />
+                <Button
+                  onClick={handleLogin}
+                  sx={{ height: "3.7em", fontWeight: "bold", width: "80%" }}
+                  variant="contained"
+                >
+                  Login
+                </Button>
+                <div className={login.optionsContainer}>
+                  <Paper className={login.signupContainer} elevation={0}>
+                    <Typography
+                      sx={{ paddingRight: "0.2rem", color: "#4d4d4d" }}
+                    >
+                      Don't have an account yet?
+                    </Typography>
+                    <Link
+                      sx={{ cursor: "pointer", fontWeight: "500" }}
+                      underline="hover"
+                    >
+                      Sign up
+                    </Link>
+                  </Paper>
+                </div>
+              </Paper>
+            </Grid>
           </Paper>
         </Grid>
       </Grid>
-    </Box>
+    </div>
   );
 };
 
