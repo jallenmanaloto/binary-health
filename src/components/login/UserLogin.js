@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
-import { loginStyle } from "../styles/Styles";
+import { formStyle } from "../styles/Styles";
 import Box from "@mui/material/Box";
 import CurrentUser from "../auth/CurrentUser";
 import Button from "@mui/material/Button";
@@ -11,7 +11,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
 const UserLogin = () => {
-  const login = loginStyle();
+  const form = formStyle();
 
   //Setting context
   const { setCurrentUser, setHeaders, currentUser, headers } =
@@ -72,14 +72,14 @@ const UserLogin = () => {
       <Grid container>
         <Grid container item xl={12}>
           <Paper
-            className={login.formContainer}
+            className={form.formContainer}
             sx={{ backgroundColor: "#fcfcfc" }}
             elevation={0}
           >
             <Grid item sm={8} md={4} xl={3}>
               <Paper
                 sx={{ borderRadius: "12px", backgroundColor: "#fcfcfc" }}
-                className={login.form}
+                className={form.form}
                 elevation={4}
               >
                 {/* <Typography sx={{ paddingBottom: "2em" }} variant="h3">
@@ -123,8 +123,8 @@ const UserLogin = () => {
                 >
                   Login
                 </Button>
-                <div className={login.optionsContainer}>
-                  <Paper className={login.signupContainer} elevation={0}>
+                <div className={form.optionsContainer}>
+                  <Paper className={form.signupContainer} elevation={0}>
                     <Typography
                       sx={{ paddingRight: "0.2rem", color: "#4d4d4d" }}
                     >
