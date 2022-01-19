@@ -59,7 +59,7 @@ const Registration = () => {
       },
     })
       .then((res) => {
-        console.log(res);
+        // Create alert to show that registration is successful and to check email for confirmation
       })
       .catch((err) => {
         console.log(err);
@@ -92,7 +92,11 @@ const Registration = () => {
                 elevation={9}
               >
                 <Typography
-                  sx={{ fontWeight: "bold", color: "#4d4d4d" }}
+                  sx={{
+                    fontWeight: "bold",
+                    color: "#4d4d4d",
+                    paddingTop: "1rem",
+                  }}
                   variant="h4"
                 >
                   Sign up
