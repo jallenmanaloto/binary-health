@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { formStyle } from "../styles/Styles";
 import Box from "@mui/material/Box";
 import CurrentUser from "../auth/CurrentUser";
@@ -131,6 +132,7 @@ const UserLogin = () => {
                       Don't have an account yet?
                     </Typography>
                     <Link
+                      href="register"
                       sx={{ cursor: "pointer", fontWeight: "500" }}
                       underline="hover"
                     >
