@@ -26,7 +26,20 @@ const Appbar = () => {
 
   return (
     <div className={appbarStyles.root}>
-      <AppBar className={appbarStyles.appbar} position="static">
+      <AppBar
+        sx={{
+          width: {
+            xs: "100vw",
+            sm: "100vw",
+            md: "75vw",
+            lg: "75vw",
+            xl: "87vw",
+          },
+        }}
+        className={appbarStyles.appbar}
+        position="static"
+        elevation={0}
+      >
         <Toolbar>
           <Typography variant="h6">Admin Access</Typography>
           <div className={appbarStyles.accountButton}>
