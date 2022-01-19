@@ -19,7 +19,7 @@ const Drawer = () => {
   const drawerStyles = drawerStyle();
 
   // set state for collapse option on reports
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   //handle opening of collapse option on reports
   const handleCollapse = () => {
