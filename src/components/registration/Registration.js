@@ -180,6 +180,7 @@ const Registration = () => {
                     Already got an account?
                   </Typography>
                   <Link
+                    href="/"
                     sx={{ cursor: "pointer", fontWeight: "500" }}
                     underline="hover"
                   >
