@@ -50,8 +50,17 @@ export const adminStyle = makeStyles({
 
 export const drawerStyle = makeStyles({
   root: {
+    display: "flex",
+    flexDirection: "column",
     height: "100vh",
-    backgroundColor: "white",
     width: "13vw",
+    backgroundColor: "white",
+    borderRight: "1px solid #e0e0e0",
+  },
+  expandIcon: {
+    color: "#707070",
+  },
+  navigationText: {
+    color: "#575757",
   },
 });
