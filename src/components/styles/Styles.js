@@ -32,4 +32,10 @@ export const formStyle = makeStyles({
     justifyContent: "center",
     width: "100%",
   },
+  optionsContainerRegister: {
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
+    paddingTop: "1rem",
+  },
 });
