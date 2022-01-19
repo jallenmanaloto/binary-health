@@ -28,7 +28,6 @@ export const drawerStyle = makeStyles({
     display: "flex",
     flexDirection: "column",
     height: "100vh",
-    width: "13vw",
     backgroundColor: "white",
     borderRight: "1px solid #e0e0e0",
   },
