@@ -1,5 +1,6 @@
 import React from "react";
 import { adminStyle } from "../styles/Styles";
+import Appbar from "./Appbar";
 import Drawer from "./Drawer";
 
 const Admin = () => {
@@ -7,6 +8,7 @@ const Admin = () => {
   return (
     <div className={adminTheme.root}>
       <Drawer />
+      <Appbar />
     </div>
   );
 };
