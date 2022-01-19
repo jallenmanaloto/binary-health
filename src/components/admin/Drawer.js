@@ -6,7 +6,9 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import AssignmentIcon from "@mui/icons-material/Assignment";
+import BarChartIcon from "@mui/icons-material/BarChart";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
@@ -27,7 +29,15 @@ const Drawer = () => {
   };
 
   return (
-    <Paper className={drawerStyles.root} sx={{ borderRadius: "0" }}>
+    <Paper
+      className={drawerStyles.root}
+      sx={{
+        borderRadius: "0",
+        display: { xs: "none", sm: "none", md: "block" },
+        width: { md: "30vw", lg: "30vw", xl: "13vw" },
+      }}
+      elevation={0}
+    >
       <List sx={{ marginTop: "15em" }} component="nav">
         <ListItemButton>
           <ListItemIcon>
@@ -66,16 +76,22 @@ const Drawer = () => {
         </ListItemButton>
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 10 }}>
+            <ListItemButton sx={{ pl: 7 }}>
+              <ListItemIcon>
+                <AccountBalanceIcon />
+              </ListItemIcon>
               <ListItemText
-                primaryTypographyProps={{ fontSize: "1.1em" }}
+                primaryTypographyProps={{ fontSize: "1.1em", ml: "-1rem" }}
                 className={drawerStyles.navigationText}
                 primary="Establishments"
               />
             </ListItemButton>
-            <ListItemButton sx={{ pl: 10 }}>
+            <ListItemButton sx={{ pl: 7 }}>
+              <ListItemIcon>
+                <BarChartIcon />
+              </ListItemIcon>
               <ListItemText
-                primaryTypographyProps={{ fontSize: "1.1em" }}
+                primaryTypographyProps={{ fontSize: "1.1em", ml: "-1rem" }}
                 className={drawerStyles.navigationText}
                 primary="Cases"
               />
