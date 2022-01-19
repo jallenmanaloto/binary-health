@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import Admin from "./components/admin/Admin";
 import CurrentUser from "./components/auth/CurrentUser";
 import Registration from "./components/registration/Registration";
 import UserLogin from "./components/login/UserLogin";
@@ -27,7 +28,8 @@ function App() {
         value={{ currentUser, setCurrentUser, headers, setHeaders }}
       >
         <Routes>
-          <Route path="/" element={<UserLogin />} />
+          <Route path="/" element={<Admin />} />
+          <Route path="sign-in" element={<UserLogin />} />
           <Route path="register" element={<Registration />} />
         </Routes>
       </CurrentUser.Provider>
