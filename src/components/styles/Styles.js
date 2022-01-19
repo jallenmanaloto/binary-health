@@ -39,3 +39,19 @@ export const formStyle = makeStyles({
     paddingTop: "1rem",
   },
 });
+
+export const adminStyle = makeStyles({
+  root: {
+    height: "100vh",
+    width: "100vw",
+    backgroundColor: "#f5f5f5",
+  },
+});
+
+export const drawerStyle = makeStyles({
+  root: {
+    height: "100vh",
+    backgroundColor: "white",
+    width: "13vw",
+  },
+});
