@@ -29,8 +29,8 @@ function App() {
         value={{ currentUser, setCurrentUser, headers, setHeaders }}
       >
         <Routes>
-          <Route path="/" element={<Admin />} />
-          <Route path="sign-in" element={<UserLogin />} />
+          <Route path="admin" element={<Admin />} />
+          <Route path="/" element={<UserLogin />} />
           <Route path="register" element={<Registration />} />
         </Routes>
       </CurrentUser.Provider>
