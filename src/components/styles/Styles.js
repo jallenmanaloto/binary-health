@@ -4,16 +4,12 @@ import { makeStyles } from "@mui/styles";
 export const adminStyle = makeStyles({
   root: {
     display: "flex",
-    height: "100vh",
     width: "100vw",
     backgroundColor: "#f5f5f5",
   },
 });
 
 export const appbarStyle = makeStyles({
-  root: {
-    width: "87vw",
-  },
   accountButton: {
     position: "absolute",
     right: "4em",
@@ -99,16 +95,5 @@ export const formStyle = makeStyles({
     justifyContent: "center",
     width: "100%",
     paddingTop: "1rem",
-  },
-});
-
-export const homeDisplayStyle = makeStyles({
-  root: {
-    position: "fixed",
-    top: "10vh",
-    left: "13vw",
-    right: "0",
-    bottom: "0",
-    overflowY: "auto",
   },
 });
