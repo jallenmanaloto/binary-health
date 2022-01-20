@@ -14,14 +14,16 @@ const Appbar = () => {
 
   //setting state for anchor of menu
   const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorOpen, setAnchorOpen] = useState(false);
 
   //handling menu
   const handleMenu = (evt) => {
     setAnchorEl(evt.currentTarget);
+    setAnchorOpen(true);
   };
 
   const handleCloseMenu = () => {
-    setAnchorEl(null);
+    setAnchorOpen(false);
   };
 
   return (
@@ -52,7 +54,7 @@ const Appbar = () => {
             <Menu
               anchorEl={anchorEl}
               anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-              open={anchorEl}
+              open={anchorOpen}
               onClose={handleCloseMenu}
             >
               <MenuItem onClick={handleCloseMenu}>My Account</MenuItem>
