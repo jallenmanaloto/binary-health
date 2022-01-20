@@ -27,7 +27,7 @@ const Appbar = () => {
   };
 
   return (
-    <div className={appbarStyles.root}>
+    <div>
       <AppBar
         sx={{
           width: {
