@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 
 const UserLogin = () => {
   const form = formStyle();
+  const navigate = useNavigate();
 
   //Setting context
   const { setCurrentUser, setHeaders, currentUser, headers } =
@@ -59,6 +60,10 @@ const UserLogin = () => {
           expiry: res.headers.expiry,
           uid: res.headers.uid,
         });
+
+        if (res.data.data.role === "admin") {
+          navigate("/admin");
+        }
       })
       .catch((err) => console.log(err));
   };
