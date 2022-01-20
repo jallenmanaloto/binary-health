@@ -1,5 +1,5 @@
 import React from "react";
-import { homeDisplayStyle } from "../styles/Styles";
+import { homeDisplayStyle } from "../../styles/Styles";
 
 const HomeDisplay = () => {
   const homeStyle = homeDisplayStyle();
