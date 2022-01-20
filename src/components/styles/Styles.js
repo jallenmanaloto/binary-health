@@ -42,6 +42,11 @@ export const caseStyle = makeStyles({
   },
 });
 
+export const chartsStyle = makeStyles({
+  chartTitle: {
+    color: "#3376b5",
+  },
+});
 export const drawerStyle = makeStyles({
   root: {
     display: "flex",
@@ -104,7 +109,6 @@ export const homeDisplayStyle = makeStyles({
     left: "13vw",
     right: "0",
     bottom: "0",
-    backgroundColor: "lightsalmon",
     overflowY: "scroll",
   },
 });
