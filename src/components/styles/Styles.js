@@ -97,3 +97,11 @@ export const formStyle = makeStyles({
     paddingTop: "1rem",
   },
 });
+
+export const cellStyle = makeStyles({
+  root: {
+    "&.MuiDataGrid-root .MuiDataGrid-cell:focus": {
+      outline: "none",
+    },
+  },
+});
