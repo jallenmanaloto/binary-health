@@ -90,7 +90,6 @@ const Users = () => {
               columns={columns}
               rows={rows}
               pageSize={pageSize}
-              //   onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
               enableCellSelect={false}
               pagination
             />
