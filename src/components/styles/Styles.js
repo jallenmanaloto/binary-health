@@ -101,8 +101,8 @@ export const homeDisplayStyle = makeStyles({
   root: {
     position: "fixed",
     top: "10vh",
-    left: "15vw",
-    right: "2vw",
+    left: "13vw",
+    right: "0",
     bottom: "0",
     backgroundColor: "lightsalmon",
     overflowY: "scroll",
