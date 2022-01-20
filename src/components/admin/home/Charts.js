@@ -31,7 +31,6 @@ const Charts = () => {
         console.log(err);
       });
   }, []);
-  console.log(casesData);
   return (
     <Container maxWidth="lg" sx={{ mt: 5, mb: 4 }}>
       <Grid container justifyContent="center" spacing={3}>
