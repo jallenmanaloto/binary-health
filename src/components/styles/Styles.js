@@ -23,6 +23,25 @@ export const appbarStyle = makeStyles({
   },
 });
 
+export const caseStyle = makeStyles({
+  casePaper: {
+    paddingTop: "1.5rem",
+    paddingBottom: "1.3em",
+  },
+  caseTitle: {
+    color: "#3376b5",
+    textAlign: "center",
+  },
+  caseData: {
+    color: "#545454",
+    textAlign: "center",
+  },
+  caseDate: {
+    color: "#737373",
+    textAlign: "center",
+  },
+});
+
 export const drawerStyle = makeStyles({
   root: {
     display: "flex",
