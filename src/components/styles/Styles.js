@@ -77,3 +77,15 @@ export const formStyle = makeStyles({
     paddingTop: "1rem",
   },
 });
+
+export const homeDisplayStyle = makeStyles({
+  root: {
+    position: "fixed",
+    top: "10vh",
+    left: "15vw",
+    right: "2vw",
+    bottom: "0",
+    backgroundColor: "lightsalmon",
+    overflowY: "scroll",
+  },
+});
