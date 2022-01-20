@@ -4,6 +4,7 @@ import Admin from "./components/admin/Admin";
 import CurrentUser from "./components/auth/CurrentUser";
 import Registration from "./components/registration/Registration";
 import UserLogin from "./components/login/UserLogin";
+import "./App.css";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
