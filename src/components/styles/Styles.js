@@ -109,6 +109,6 @@ export const homeDisplayStyle = makeStyles({
     left: "13vw",
     right: "0",
     bottom: "0",
-    overflowY: "scroll",
+    overflowY: "auto",
   },
 });
