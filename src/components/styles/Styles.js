@@ -105,3 +105,13 @@ export const cellStyle = makeStyles({
     },
   },
 });
+
+export const loginErrorAlert = makeStyles({
+  root: {
+    position: "absolute",
+    width: "25%",
+    top: "3em",
+    left: "50%",
+    transform: "translateX(-50%)",
+  },
+});
