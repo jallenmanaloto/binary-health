@@ -1,7 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import CasesTable from "../tables/CasesTable";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
 
 const Cases = () => {
-  return <div></div>;
+  //setting state for response
+  const [positiveUsers, setPositiveUsers] = useState([]);
+
+  //defining columns for table
+  const columns = [
+    { id: 1, label: "First Name" },
+    { id: 2, label: "Middle Name" },
+    { id: 3, label: "Last Name" },
+    { id: 4, label: "Email" },
+    { id: 5, label: "Covid Status" },
+  ];
+
+  //sending request to get all users with positive status
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: "http://localhost:3001/api/v1/users/all_positive",
+    })
+      .then((res) => {
+        setPositiveUsers(res.data.positive);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  console.log(positiveUsers);
+  return (
+    <Container
+      maxWidth="lg"
+      sx={{
+        position: "absolute",
+        top: "10vh",
+        right: "0",
+        bottom: "0",
+        left: { xs: "0", sm: "0", md: "30vw", lg: "30vw", xl: "13vw" },
+        overflowX: "hidden",
+        overflowY: "scroll",
+      }}
+      spacing={2}
+    >
+      <Grid container>
+        <Grid item lg={12}>
+          <Paper>
+            <Typography sx={{ p: 2, color: "#3376b5" }} variant="h5">
+              Positive Cases
+            </Typography>
+          </Paper>
+        </Grid>
+        <Grid item lg={12}>
+          <CasesTable columns={columns} rows={positiveUsers} />
+        </Grid>
+      </Grid>
+    </Container>
+  );
 };
 
 export default Cases;
