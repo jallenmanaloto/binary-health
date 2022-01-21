@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { formStyle } from "../styles/Styles";
+import Alerts from "../alerts/Alerts";
 import Box from "@mui/material/Box";
 import CurrentUser from "../auth/CurrentUser";
 import Button from "@mui/material/Button";
@@ -23,6 +24,16 @@ const UserLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  //Setting state for any error on login
+  const [error, setError] = useState(false);
+
+  //Handling error display
+  const handleError = () => {
+    setError(true);
+    setInterval(() => {
+      setError(false);
+    }, 4000);
+  };
   //Handling onchange for value of textfields
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -65,7 +76,9 @@ const UserLogin = () => {
           navigate("/admin");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        handleError();
+      });
   };
 
   //handling login on enter key
@@ -82,15 +95,13 @@ const UserLogin = () => {
             sx={{ backgroundColor: "#fcfcfc" }}
             elevation={0}
           >
+            {error ? <Alerts /> : null}
             <Grid item sm={8} md={4} xl={3}>
               <Paper
                 sx={{ borderRadius: "12px", backgroundColor: "#fcfcfc" }}
                 className={form.form}
                 elevation={4}
               >
-                {/* <Typography sx={{ paddingBottom: "2em" }} variant="h3">
-                  BETELGEUSE
-                </Typography> */}
                 <Typography
                   sx={{ fontWeight: "bold", color: "#4d4d4d" }}
                   variant="h4"
