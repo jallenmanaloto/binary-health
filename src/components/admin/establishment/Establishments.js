@@ -3,7 +3,7 @@ import { establishmentStyle } from "../../styles/Styles";
 import axios from "axios";
 import Container from "@mui/material/Container";
 import CurrentUser from "../../auth/CurrentUser";
-import EstablishmentTable from "../home/tables/EstablishmentTable";
+import EstablishmentTable from "../tables/EstablishmentTable";
 import FormControl from "@mui/material/FormControl";
 import Grid from "@mui/material/Grid";
 import InputLabel from "@mui/material/InputLabel";
