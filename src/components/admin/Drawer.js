@@ -78,7 +78,10 @@ const Drawer = () => {
         </ListItemButton>
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 7 }}>
+            <ListItemButton
+              sx={{ pl: 7 }}
+              onClick={() => setNavigation("establishment")}
+            >
               <ListItemIcon>
                 <AccountBalanceIcon />
               </ListItemIcon>
