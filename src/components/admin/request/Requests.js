@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
 import Tables from "../home/tables/Table";
+import Typography from "@mui/material/Typography";
 
 const Requests = () => {
   const columns = [
@@ -42,6 +44,13 @@ const Requests = () => {
       }}
     >
       <Grid container>
+        <Grid item sm={10} lg={12}>
+          <Paper sx={{ p: 2 }}>
+            <Typography sx={{ color: "#3376b5" }} variant="h5">
+              Requests from users
+            </Typography>
+          </Paper>
+        </Grid>
         <Grid item sm={10} lg={12}>
           <Tables columns={columns} rows={rows} />
         </Grid>
