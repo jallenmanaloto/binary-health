@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -21,7 +20,7 @@ const Tables = ({ columns, rows }) => {
   return (
     <Paper sx={{ width: "100%", mt: 3 }}>
       <TableContainer sx={{ Height: 750 }}>
-        <Table aria-label="table">
+        <Table aria-label="table" hover>
           <TableHead>
             <TableRow>
               {columns.map((column) => (
@@ -39,15 +38,29 @@ const Tables = ({ columns, rows }) => {
             {(rowsPerPage > 0
               ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : rows
-            ).map((row, key) => (
-              <TableRow key={key}>
-                <TableCell align="center">{row.request_type}</TableCell>
-                <TableCell align="center">{row.name}</TableCell>
-                <TableCell align="center">{row.requested_by}</TableCell>
-                <TableCell align="center">{row.email}</TableCell>
-                <TableCell align="center">{row.created_at}</TableCell>
-              </TableRow>
-            ))}
+            ).map((row, key) => {
+              const convertTime = (date) => {
+                const options = {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                };
+                let newDate = new Date(date);
+                return newDate.toLocaleDateString("en-US", options);
+              };
+              return (
+                <TableRow hover key={key}>
+                  <TableCell align="center">{row.request_type}</TableCell>
+                  <TableCell align="center">{row.name}</TableCell>
+                  <TableCell align="center">{row.requested_by}</TableCell>
+                  <TableCell align="center">{row.email}</TableCell>
+                  <TableCell align="center">
+                    {convertTime(row.created_at)}
+                  </TableCell>
+                  <TableCell align="center">{row.status}</TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>
