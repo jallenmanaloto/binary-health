@@ -18,7 +18,6 @@ const Users = () => {
       url: "http://localhost:3001/api/v1/users",
     })
       .then((res) => {
-        console.log(res);
         setUsers(res.data.users);
       })
       .catch((err) => {
