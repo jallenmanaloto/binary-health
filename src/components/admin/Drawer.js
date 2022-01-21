@@ -91,7 +91,10 @@ const Drawer = () => {
                 primary="Establishments"
               />
             </ListItemButton>
-            <ListItemButton sx={{ pl: 7 }}>
+            <ListItemButton
+              sx={{ pl: 7 }}
+              onClick={() => setNavigation("cases")}
+            >
               <ListItemIcon>
                 <BarChartIcon />
               </ListItemIcon>
