@@ -6,11 +6,17 @@ import Alerts from "../alerts/Alerts";
 import Box from "@mui/material/Box";
 import CurrentUser from "../auth/CurrentUser";
 import Button from "@mui/material/Button";
+import FormControl from "@mui/material/FormControl";
 import Grid from "@mui/material/Grid";
+import InputAdornment from "@mui/material/InputAdornment";
+import InputLabel from "@mui/material/InputLabel";
 import Link from "@mui/material/Link";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const UserLogin = () => {
   const form = formStyle();
@@ -24,8 +30,16 @@ const UserLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  //setting state for password visibility
+  const [visible, setVisible] = useState(false);
+
   //Setting state for any error on login
   const [error, setError] = useState(false);
+
+  //handling password visibility
+  const handlePasswordVisibility = () => {
+    setVisible(!visible);
+  };
 
   //Handling error display
   const handleError = () => {
@@ -121,21 +135,45 @@ const UserLogin = () => {
                   label="Email"
                   variant="outlined"
                 />
-                <TextField
-                  onChange={handlePassword}
-                  onKeyDown={handleEnterKeyLogin}
-                  value={password}
-                  sx={{
-                    paddingBottom: "1.2rem",
-                    width: "80%",
-                    backgroundColor: "#fcfcfc",
-                  }}
-                  label="Password"
-                  variant="outlined"
-                />
+                <FormControl sx={{ width: "80%" }}>
+                  <InputLabel>Password</InputLabel>
+                  <OutlinedInput
+                    onChange={handlePassword}
+                    onKeyDown={handleEnterKeyLogin}
+                    value={password}
+                    sx={{
+                      width: "100%",
+                      backgroundColor: "#fcfcfc",
+                    }}
+                    label="Password"
+                    variant="outlined"
+                    type={visible ? "text" : "password"}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        {visible ? (
+                          <VisibilityOffIcon
+                            sx={{ cursor: "pointer" }}
+                            onClick={handlePasswordVisibility}
+                          />
+                        ) : (
+                          <VisibilityIcon
+                            sx={{ cursor: "pointer" }}
+                            onClick={handlePasswordVisibility}
+                          />
+                        )}
+                      </InputAdornment>
+                    }
+                  />
+                </FormControl>
+
                 <Button
                   onClick={handleLogin}
-                  sx={{ height: "3.7em", fontWeight: "bold", width: "80%" }}
+                  sx={{
+                    height: "3.7em",
+                    fontWeight: "bold",
+                    width: "80%",
+                    mt: 2,
+                  }}
                   variant="contained"
                 >
                   Login
