@@ -4,7 +4,7 @@ import Container from "@mui/material/Container";
 import CurrentUser from "../../auth/CurrentUser";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import Tables from "../home/tables/Table";
+import Tables from "../tables/Table";
 import Typography from "@mui/material/Typography";
 
 const Requests = () => {
