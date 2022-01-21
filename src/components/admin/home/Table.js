@@ -12,7 +12,7 @@ import TableRow from "@mui/material/TableRow";
 const Tables = ({ columns, rows }) => {
   //Setting state for page
   const [page, setPage] = useState(0);
-  const rowsPerPage = 7;
+  const rowsPerPage = 10;
 
   //Handlig changing of page
   const handlePageChange = (event, newPage) => {
