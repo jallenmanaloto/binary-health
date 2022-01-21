@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Navigate, Routes, Route } from "react-router-dom";
 import Admin from "./components/admin/Admin";
 import CurrentUser from "./components/auth/CurrentUser";
 import Registration from "./components/registration/Registration";
@@ -22,15 +22,17 @@ function App() {
     expiry: "",
     uid: "",
   });
-
   return (
     <div className="App">
       <CurrentUser.Provider
         value={{ currentUser, setCurrentUser, headers, setHeaders }}
       >
         <Routes>
-          <Route path="admin" element={<Admin />} />
-          <Route path="/" element={<UserLogin />} />
+          {headers.client !== "" ? (
+            <Route path="admin" element={<Admin />} />
+          ) : (
+            <Route path="/" element={<UserLogin />} />
+          )}
           <Route path="register" element={<Registration />} />
         </Routes>
       </CurrentUser.Provider>
