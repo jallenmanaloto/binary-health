@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { establishmentStyle } from "../../styles/Styles";
 import axios from "axios";
 import Container from "@mui/material/Container";
+import CurrentUser from "../../auth/CurrentUser";
 import EstablishmentTable from "../home/tables/EstablishmentTable";
 import FormControl from "@mui/material/FormControl";
 import Grid from "@mui/material/Grid";
@@ -12,7 +13,13 @@ import Select from "@mui/material/Select";
 import Typography from "@mui/material/Typography";
 
 const Establishments = () => {
+  //setting headers value from context
+  const { headers } = useContext(CurrentUser);
+
+  //setting classes for styling
   const classes = establishmentStyle();
+
+  //setting states for select value and rows for table
   const [id, setId] = useState("");
   const [visitors, setVisitors] = useState([]);
 
@@ -31,6 +38,12 @@ const Establishments = () => {
     axios({
       method: "GET",
       url: `http://localhost:3001/api/v1/get_users/${evt.target.value}`,
+      headers: {
+        "access-token": headers.token,
+        client: headers.client,
+        expiry: headers.expiry,
+        uid: headers.uid,
+      },
     })
       .then((res) => {
         setVisitors(res.data.users);

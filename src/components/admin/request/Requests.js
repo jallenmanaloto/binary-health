@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import Container from "@mui/material/Container";
+import CurrentUser from "../../auth/CurrentUser";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Tables from "../home/tables/Table";
 import Typography from "@mui/material/Typography";
 
 const Requests = () => {
+  //setting headers value from context
+  const { headers } = useContext(CurrentUser);
+
+  //setting columns for table
   const columns = [
     { id: 1, label: "Request Type", maxWidth: 140 },
     { id: 2, label: "Request", maxWidth: 150 },
@@ -22,6 +27,12 @@ const Requests = () => {
     axios({
       method: "GET",
       url: "http://localhost:3001/api/v1/requests",
+      headers: {
+        "access-token": headers.token,
+        client: headers.client,
+        expiry: headers.expiry,
+        uid: headers.uid,
+      },
     })
       .then((res) => {
         setRows(res.data.requests);

@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { cellStyle } from "../../styles/Styles";
 import axios from "axios";
 import Container from "@mui/material/Container";
-import { cellStyle } from "../../styles/Styles";
+import CurrentUser from "../../auth/CurrentUser";
 import { DataGrid } from "@mui/x-data-grid";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 
 const Users = () => {
+  //setting context values for headers
+  const { headers } = useContext(CurrentUser);
   const classes = cellStyle();
   const [pageSize, setPageSize] = useState(8);
   const [users, setUsers] = useState([]);
@@ -16,6 +19,12 @@ const Users = () => {
     axios({
       method: "GET",
       url: "http://localhost:3001/api/v1/users",
+      headers: {
+        "access-token": headers.token,
+        client: headers.client,
+        expiry: headers.expiry,
+        uid: headers.uid,
+      },
     })
       .then((res) => {
         setUsers(res.data.users);

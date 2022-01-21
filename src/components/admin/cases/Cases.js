@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import CasesTable from "../tables/CasesTable";
+import CurrentUser from "../../auth/CurrentUser";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
 const Cases = () => {
+  //setting headers value from context
+  const { headers } = useContext(CurrentUser);
+
   //setting state for response
   const [positiveUsers, setPositiveUsers] = useState([]);
 
@@ -24,6 +28,12 @@ const Cases = () => {
     axios({
       method: "GET",
       url: "http://localhost:3001/api/v1/users/all_positive",
+      headers: {
+        "access-token": headers.token,
+        client: headers.client,
+        expiry: headers.expiry,
+        uid: headers.uid,
+      },
     })
       .then((res) => {
         setPositiveUsers(res.data.positive);
@@ -32,7 +42,7 @@ const Cases = () => {
         console.log(err);
       });
   }, []);
-  console.log(positiveUsers);
+
   return (
     <Container
       maxWidth="lg"
