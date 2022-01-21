@@ -39,7 +39,7 @@ const Requests = () => {
       }}
     >
       <Grid container>
-        <Grid item sm={12} lg={12}>
+        <Grid item sm={10} lg={12}>
           <Tables columns={columns} rows={rows} />
         </Grid>
       </Grid>
