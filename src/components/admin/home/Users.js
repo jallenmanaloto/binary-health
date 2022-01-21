@@ -73,7 +73,6 @@ const Users = () => {
       covidStatus: user.covid_status,
     };
   });
-  console.log(users);
   return (
     <Container maxWidth="lg" sx={{ mt: 5, mb: 8 }}>
       <Grid container justifyContent="center" spacing={3}>
