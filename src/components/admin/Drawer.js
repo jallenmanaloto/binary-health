@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { drawerStyle } from "../styles/Styles";
 import {
   List,
@@ -7,6 +7,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import AdminNavigation from "./context/AdminNavigations";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import Collapse from "@mui/material/Collapse";
@@ -19,6 +20,7 @@ import SourceIcon from "@mui/icons-material/Source";
 
 const Drawer = () => {
   const drawerStyles = drawerStyle();
+  const { setNavigation } = useContext(AdminNavigation);
 
   // set state for collapse option on reports
   const [open, setOpen] = useState(false);
@@ -39,7 +41,7 @@ const Drawer = () => {
       elevation={0}
     >
       <List sx={{ marginTop: "15em" }} component="nav">
-        <ListItemButton>
+        <ListItemButton onClick={() => setNavigation("home")}>
           <ListItemIcon>
             <HomeIcon sx={{ marginLeft: "1rem" }} />
           </ListItemIcon>
@@ -49,7 +51,7 @@ const Drawer = () => {
             primary="Home"
           />
         </ListItemButton>
-        <ListItemButton>
+        <ListItemButton onClick={() => setNavigation("request")}>
           <ListItemIcon>
             <SourceIcon sx={{ marginLeft: "1rem" }} />
           </ListItemIcon>
