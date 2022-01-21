@@ -26,7 +26,7 @@ const Requests = () => {
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, []);
   return (
     <Container
       maxWidth="lg"
