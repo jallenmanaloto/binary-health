@@ -40,6 +40,14 @@ export const caseStyle = makeStyles({
   },
 });
 
+export const cellStyle = makeStyles({
+  root: {
+    "&.MuiDataGrid-root .MuiDataGrid-cell:focus": {
+      outline: "none",
+    },
+  },
+});
+
 export const chartsStyle = makeStyles({
   chartTitle: {
     color: "#3376b5",
@@ -105,14 +113,6 @@ export const formStyle = makeStyles({
     justifyContent: "center",
     width: "100%",
     paddingTop: "1rem",
-  },
-});
-
-export const cellStyle = makeStyles({
-  root: {
-    "&.MuiDataGrid-root .MuiDataGrid-cell:focus": {
-      outline: "none",
-    },
   },
 });
 
