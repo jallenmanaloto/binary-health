@@ -13,6 +13,8 @@ export const appbarStyle = makeStyles({
   accountButton: {
     position: "absolute",
     right: "4em",
+    display: "flex",
+    alignItems: "center",
   },
   accountCircle: {
     color: "whitesmoke",
