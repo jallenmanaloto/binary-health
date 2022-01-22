@@ -4,10 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { formStyle } from "../styles/Styles";
 import { loginImage } from "../styles/Styles";
 import Alerts from "../alerts/Alerts";
-import Box from "@mui/material/Box";
+import Checkbox from "@mui/material/Checkbox";
 import CurrentUser from "../auth/CurrentUser";
 import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormGroup from "@mui/material/FormGroup";
 import Grid from "@mui/material/Grid";
 import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
@@ -36,12 +38,20 @@ const UserLogin = () => {
   //setting state for password visibility
   const [visible, setVisible] = useState(false);
 
+  //setting state for checkbox
+  const [checked, setChecked] = useState(true);
+
   //Setting state for any error on login
   const [error, setError] = useState(false);
 
   //handling password visibility
   const handlePasswordVisibility = () => {
     setVisible(!visible);
+  };
+
+  //handling change event for checkbox
+  const handleCheckbox = (evt) => {
+    setChecked(evt.target.checked);
   };
 
   //Handling error display
@@ -82,6 +92,12 @@ const UserLogin = () => {
         });
 
         const { "access-token": token } = res.headers;
+        const auth = {
+          token: token,
+          client: res.headers.client,
+          expiry: res.headers.expiry,
+          uid: res.headers.uid,
+        };
         setHeaders({
           token: token,
           client: res.headers.client,
@@ -89,12 +105,17 @@ const UserLogin = () => {
           uid: res.headers.uid,
         });
 
+        checked
+          ? localStorage.setItem("userAuth", JSON.stringify(auth))
+          : sessionStorage.setItem("userAuth", JSON.stringify(auth));
+
         if (res.data.data.role === "admin") {
           navigate("/admin");
         }
       })
       .catch((err) => {
         handleError();
+        console.log(err);
       });
   };
 
@@ -134,7 +155,7 @@ const UserLogin = () => {
                   sx={{ fontWeight: "bold", color: "#4d4d4d" }}
                   variant="h4"
                 >
-                  Sign in
+                  BETELGEUSE
                 </Typography>
                 <TextField
                   onChange={handleEmail}
@@ -179,6 +200,26 @@ const UserLogin = () => {
                     }
                   />
                 </FormControl>
+                <FormGroup
+                  sx={{
+                    width: "80%",
+                    display: "flex",
+                    justifyContent: "start",
+                    mt: 1,
+                  }}
+                >
+                  <FormControlLabel
+                    sx={{ color: "gray" }}
+                    control={
+                      <Checkbox
+                        sx={{ color: "#8f8f8f" }}
+                        checked={checked}
+                        onChange={handleCheckbox}
+                      />
+                    }
+                    label="Remember me"
+                  />
+                </FormGroup>
 
                 <Button
                   onClick={handleLogin}
@@ -186,7 +227,7 @@ const UserLogin = () => {
                     height: "3.7em",
                     fontWeight: "bold",
                     width: "80%",
-                    mt: 2,
+                    mt: 1,
                   }}
                   variant="contained"
                 >
