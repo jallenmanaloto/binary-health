@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigate, Routes, Route } from "react-router-dom";
 import Admin from "./components/admin/Admin";
 import CurrentUser from "./components/auth/CurrentUser";
@@ -22,6 +22,12 @@ function App() {
     expiry: "",
     uid: "",
   });
+  useEffect(() => {
+    localStorage.getItem("userAuth")
+      ? setHeaders(JSON.parse(localStorage.getItem("userAuth")))
+      : setHeaders(JSON.parse(sessionStorage.getItem("userAuth")));
+  }, []);
+
   return (
     <div className="App">
       <CurrentUser.Provider
@@ -31,9 +37,10 @@ function App() {
           {headers.client !== "" ? (
             <Route path="admin" element={<Admin />} />
           ) : (
-            <Route path="/" element={<UserLogin />} />
+            <Route path="login" element={<UserLogin />} />
           )}
           <Route path="register" element={<Registration />} />
+          <Route path="logout" element={<UserLogin />} />
         </Routes>
       </CurrentUser.Provider>
     </div>
