@@ -123,3 +123,17 @@ export const loginErrorAlert = makeStyles({
     transform: "translateX(-50%)",
   },
 });
+
+export const loginImage = makeStyles({
+  root: {
+    height: "66vh",
+    position: "absolute",
+    top: "9%",
+    left: "50%",
+    transform: "translateX(-50%)",
+    borderRadius: "12%",
+    zindex: 1,
+    opacity: 0.15,
+  },
+  Title: {},
+});
