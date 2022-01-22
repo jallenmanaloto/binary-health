@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { formStyle } from "../styles/Styles";
+import { loginImage } from "../styles/Styles";
 import Alerts from "../alerts/Alerts";
 import Box from "@mui/material/Box";
 import CurrentUser from "../auth/CurrentUser";
@@ -11,6 +12,7 @@ import Grid from "@mui/material/Grid";
 import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
 import Link from "@mui/material/Link";
+import MemberLogin from "../../images/MemberLogin.jpg";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
@@ -20,6 +22,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const UserLogin = () => {
   const form = formStyle();
+  const imageStyle = loginImage();
   const navigate = useNavigate();
 
   //Setting context
@@ -103,16 +106,27 @@ const UserLogin = () => {
   return (
     <div>
       <Grid container>
-        <Grid container item xl={12}>
+        <Grid container item sm={12} md={12} lg={12} xl={12}>
+          <Typography
+            sx={{ position: "fixed", pt: 8, pl: 20, color: "#4d4d4d" }}
+            variant="h3"
+          >
+            Betelgeuse
+          </Typography>
+          <img className={imageStyle.root} src={MemberLogin} alt="background" />
           <Paper
             className={form.formContainer}
             sx={{ backgroundColor: "#fcfcfc" }}
             elevation={0}
           >
             {error ? <Alerts /> : null}
-            <Grid item sm={8} md={4} xl={3}>
+            <Grid sx={{ zIndex: 10 }} item sm={8} md={4} xl={3}>
               <Paper
-                sx={{ borderRadius: "12px", backgroundColor: "#fcfcfc" }}
+                sx={{
+                  borderRadius: "12px",
+                  backgroundColor: "#fcfcfc",
+                  zIndex: 1,
+                }}
                 className={form.form}
                 elevation={4}
               >
