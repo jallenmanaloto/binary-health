@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 
 const Appbar = () => {
   //setting value for headers
-  const { headers } = useContext(CurrentUser);
+  const { currentUser, headers } = useContext(CurrentUser);
 
   //declaring navigation for logout
   let navigate = useNavigate();
@@ -47,12 +47,12 @@ const Appbar = () => {
         uid: headers.uid,
       },
     })
-      .then(navigate("/register"))
+      .then(navigate("/logout"))
       .catch((err) => {
         console.log(err);
       });
+    localStorage.removeItem("userHeaders");
   };
-
   return (
     <div>
       <AppBar
@@ -70,11 +70,12 @@ const Appbar = () => {
         elevation={0}
       >
         <Toolbar>
-          <Typography variant="h6">Admin Access</Typography>
+          <Typography variant="h6">Admin Dashboard</Typography>
           <div className={appbarStyles.accountButton}>
+            <Typography variant="body1">{`${currentUser.first_name} ${currentUser.last_name}`}</Typography>
             <IconButton onClick={handleMenu}>
               <AccountCircle
-                sx={{ fontSize: "1.5em" }}
+                sx={{ fontSize: "1.25em" }}
                 className={appbarStyles.accountCircle}
               />
             </IconButton>
