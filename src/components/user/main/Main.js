@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "@mui/material/Container";
+import MyAppointments from "../calendars/MyAppointments";
 import Requests from "./Requests";
 
 const Main = () => {
@@ -14,6 +15,7 @@ const Main = () => {
       }}
     >
       <Requests />
+      <MyAppointments />
     </Container>
   );
 };
