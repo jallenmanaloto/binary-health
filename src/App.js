@@ -3,6 +3,7 @@ import { Navigate, Routes, Route } from "react-router-dom";
 import Admin from "./components/admin/Admin";
 import CurrentUser from "./components/auth/CurrentUser";
 import Registration from "./components/registration/Registration";
+import User from "./components/user/User";
 import UserLogin from "./components/login/UserLogin";
 import "./App.css";
 
@@ -33,7 +34,7 @@ function App() {
       <CurrentUser.Provider
         value={{ currentUser, setCurrentUser, headers, setHeaders }}
       >
-        <Routes>
+        {/* <Routes>
           {headers.client !== "" ? (
             <Route path="admin" element={<Admin />} />
           ) : (
@@ -41,7 +42,8 @@ function App() {
           )}
           <Route path="register" element={<Registration />} />
           <Route path="logout" element={<UserLogin />} />
-        </Routes>
+        </Routes> */}
+        <User />
       </CurrentUser.Provider>
     </div>
   );
