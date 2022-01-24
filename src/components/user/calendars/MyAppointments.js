@@ -76,7 +76,7 @@ const MyAppointments = () => {
             </Paper>
           </Grid>
           <Grid item xs={12} sm={10} md={4} lg={4}>
-            <Paper sx={{ height: "100%" }}>
+            <Paper sx={{ height: "100%", overflowY: "auto" }}>
               <Typography
                 sx={{ color: "#3376b5", p: 2, fontWeight: 600 }}
                 variant="h6"
