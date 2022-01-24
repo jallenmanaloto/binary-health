@@ -56,7 +56,7 @@ const MyAppointments = () => {
             <Paper sx={{ height: "100%" }}>
               <Typography
                 sx={{ color: "#3376b5", p: 2, fontWeight: 600 }}
-                variant="subtitle1"
+                variant="h6"
               >
                 My Appointments
               </Typography>
