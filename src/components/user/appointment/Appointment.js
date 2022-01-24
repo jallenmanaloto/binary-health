@@ -1,44 +1,57 @@
 import React, { useState } from "react";
+import { ThemeProvider, useTheme } from "@mui/material/styles";
 import AppointmentDisplay from "./AppointmentDisplay";
 import AppointmentNavigation from "./AppointmentNavigation";
+import MakeAppointment from "./MakeAppointment";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import StaticDatePicker from "@mui/lab/StaticDatePicker";
 
 const Appointment = () => {
+  const theme = useTheme();
   //setting state for upstream value of navigations
   const [myAppointmentsActive, setMyAppointmentsActive] = useState(true);
   const [makeAppointmentsActive, setMakeAppointmentsActive] = useState(false);
 
   return (
-    <Container
-      sx={{
-        mt: { sm: 6, lg: 6 },
-        height: "94vh",
-      }}
-      maxWidth="lg"
-    >
-      <Grid container spacing={3}>
-        <Grid
-          sx={{ display: { xs: "none", sm: "none", md: "none", lg: "block" } }}
-          item
-          md={0}
-          lg={3}
-        >
-          <AppointmentNavigation
-            setMyAppointmentsActive={setMyAppointmentsActive}
-            setMakeAppointmentsActive={setMakeAppointmentsActive}
-          />
+    <ThemeProvider theme={theme}>
+      <Container
+        sx={{
+          mt: { sm: 6, lg: 6 },
+          height: "94vh",
+        }}
+        maxWidth="lg"
+      >
+        <Grid container spacing={3}>
+          <Grid
+            sx={{
+              display: { xs: "none", sm: "none", md: "none", lg: "block" },
+            }}
+            item
+            md={0}
+            lg={3}
+          >
+            <AppointmentNavigation
+              setMyAppointmentsActive={setMyAppointmentsActive}
+              setMakeAppointmentsActive={setMakeAppointmentsActive}
+            />
+          </Grid>
+          <Grid
+            sx={{ display: { md: "block" } }}
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={9}
+          >
+            {myAppointmentsActive ? (
+              <AppointmentDisplay />
+            ) : (
+              <MakeAppointment />
+            )}
+          </Grid>
         </Grid>
-        <Grid sx={{ display: { md: "block" } }} item sm={12} md={12} lg={9}>
-          {myAppointmentsActive ? <AppointmentDisplay /> : null}
-        </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </ThemeProvider>
   );
 };
 
