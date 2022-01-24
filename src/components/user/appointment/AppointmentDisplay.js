@@ -61,7 +61,7 @@ const AppointmentDisplay = () => {
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Container sx={{ height: "90vh" }} maxWidth="lg">
         <Grid container justifyContent="center" spacing={2}>
-          <Grid item xs={8} sm={8} md={8} lg={12}>
+          <Grid item xs={12} lg={12}>
             <Paper elevation={0}>
               <StaticDatePicker
                 displayStaticWrapperAs="desktop"
@@ -74,7 +74,7 @@ const AppointmentDisplay = () => {
               />
             </Paper>
           </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Grid item xs={12} lg={12}>
             <Paper
               sx={{ pt: 5, height: "100%", overflowY: "auto" }}
               elevation={0}
