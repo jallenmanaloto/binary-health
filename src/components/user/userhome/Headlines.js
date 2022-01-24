@@ -26,7 +26,7 @@ const Headlines = () => {
   const articles = ( //headline.map((article) => {
     //  return (
     <Grid item lg={10}>
-      <Paper sx={{ mt: 3 }}>
+      <Paper sx={{ mt: 3, mb: 3 }}>
         <Typography sx={{ p: 3, color: "#4d4d4d", width: "90%" }} variant="h5">
           {/* {article.title} */}
           TITLE
