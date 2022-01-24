@@ -83,7 +83,13 @@ const MyAppointments = () => {
               >
                 My Appointments
               </Typography>
-              {appointmentToday}
+              {appointmentToday.length > 0 ? (
+                appointmentToday
+              ) : (
+                <Typography sx={{ p: 2, color: "#4d4d4d" }} variant="body1">
+                  No appointments today
+                </Typography>
+              )}
             </Paper>
           </Grid>
         </Grid>
