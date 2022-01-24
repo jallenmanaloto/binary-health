@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
+import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
@@ -10,7 +11,10 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import StaticDatePicker from "@mui/lab/StaticDatePicker";
 
 const MyAppointments = () => {
+  //setting state for date in calendar
   const [date, setDate] = useState(new Date());
+
+  //setting state for response from api
   const [appointments, setAppointments] = useState([]);
 
   const filterDate = String(date).slice(0, 15);
@@ -18,9 +22,28 @@ const MyAppointments = () => {
     .filter((date) => date.adate.slice(0, 15) === filterDate)
     .map((item) => {
       return (
-        <Typography key={item.id} variant="h6">
-          {item.aname}
-        </Typography>
+        <>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <Typography
+              sx={{ p: 2, color: "#4d4d4d" }}
+              key={item.id}
+              variant="h6"
+            >
+              {item.aname}
+            </Typography>
+            <Typography sx={{ p: 2, color: "#4d4d4d" }} variant="body1">
+              8:00am
+            </Typography>
+          </div>
+          <Divider />
+        </>
       );
     });
 
