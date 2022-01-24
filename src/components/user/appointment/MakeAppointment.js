@@ -43,7 +43,7 @@ const MakeAppointment = () => {
     const minutes = time.slice(19, 21);
     const ampm = hours >= 12 ? "PM" : "AM";
 
-    return `${hours % 12}:${minutes} ${ampm}`;
+    return `${hours % 12 === 0 ? 12 : hours % 12}:${minutes} ${ampm}`;
   };
 
   //handling making an appointment
@@ -55,7 +55,7 @@ const MakeAppointment = () => {
       data: {
         aname: appointmentType,
         atype: appointmentType,
-        adate: appointmentDate,
+        adate: String(appointmentDate),
         atime: convertTime(appointmentDate),
       },
     })
