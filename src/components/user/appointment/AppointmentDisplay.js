@@ -24,6 +24,7 @@ const AppointmentDisplay = () => {
       return (
         <>
           <div
+            key={date.id}
             style={{
               display: "flex",
               justifyContent: "space-between",
