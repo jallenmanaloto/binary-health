@@ -35,7 +35,7 @@ const Appointment = () => {
           />
         </Grid>
         <Grid sx={{ display: { md: "block" } }} item sm={12} md={12} lg={9}>
-          <Paper>{myAppointmentsActive ? <AppointmentDisplay /> : null}</Paper>
+          {myAppointmentsActive ? <AppointmentDisplay /> : null}
         </Grid>
       </Grid>
     </Container>
