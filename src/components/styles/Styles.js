@@ -146,4 +146,9 @@ export const userStyle = makeStyles({
     height: "100vh",
     backgroundColor: "#ebebeb",
   },
+  homeRoot: {
+    overflowY: "auto",
+    paddingTop: "1rem",
+    height: "96vh",
+  },
 });
