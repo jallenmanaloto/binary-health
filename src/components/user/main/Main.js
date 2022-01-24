@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "@mui/material/Container";
+import Appointment from "../appointment/Appointment";
 import UserHome from "../userhome/UserHome";
 
 const Main = () => {
@@ -12,7 +13,8 @@ const Main = () => {
         overflowY: "scroll",
       }}
     >
-      <UserHome />
+      {/* <UserHome /> */}
+      <Appointment />
     </Container>
   );
 };
