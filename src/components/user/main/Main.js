@@ -1,7 +1,6 @@
 import React from "react";
 import Container from "@mui/material/Container";
-import MyAppointments from "../calendars/MyAppointments";
-import Requests from "./Requests";
+import UserHome from "../userhome/UserHome";
 
 const Main = () => {
   return (
@@ -9,13 +8,11 @@ const Main = () => {
       maxWidth="xl"
       sx={{
         minHeight: "100vh",
-        backgroundColor: "lightslategray",
-        pt: 10,
+        pt: { xs: 0, sm: 10, md: 10, lg: 10 },
         overflowY: "scroll",
       }}
     >
-      <Requests />
-      <MyAppointments />
+      <UserHome />
     </Container>
   );
 };
