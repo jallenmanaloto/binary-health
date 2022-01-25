@@ -18,7 +18,7 @@ import Tooltip from "@mui/material/Tooltip";
 
 const UserTopAppbar = () => {
   //setting context
-  const { setHome, setRestrictions, setScheduleRequests } =
+  const { setHome, setMenuActive, setRestrictions, setScheduleRequests } =
     useContext(AppbarNavigation);
 
   //setting state for active navigation
@@ -72,18 +72,20 @@ const UserTopAppbar = () => {
           backgroundColor: "white",
           borderBottom: "1px solid #e0e0e0",
           display: { xs: "none", sm: "block" },
+          zIndex: "1",
         }}
         elevation={0}
       >
         <Toolbar sx={{ p: 1 }}>
-          <MenuIcon
+          {/* <MenuIcon
             sx={{
               color: "gray",
               fontSize: "2.25rem",
               cursor: "pointer",
               display: { xs: "block", lg: "none" },
             }}
-          />
+            onClick={() => setMenuActive(true)}
+          /> */}
           <Container maxWidth="md">
             <Grid container justifyContent="space-evenly" spacing={0}>
               <Grid item md={3}>
