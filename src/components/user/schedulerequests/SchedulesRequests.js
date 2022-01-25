@@ -5,6 +5,7 @@ import AppointmentDisplay from "./AppointmentDisplay";
 import CreateRequest from "./CreateRequest";
 import Container from "@mui/material/Container";
 import DrawerLeft from "./DrawerLeft";
+import Fab from "@mui/material/Fab";
 import Grid from "@mui/material/Grid";
 import MakeAppointment from "./MakeAppointment";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -46,7 +47,7 @@ const SchedulesRequests = () => {
             top: 18,
             left: 12,
             zIndex: "10",
-            display: { xs: "block", lg: "none" },
+            display: { xs: "none", sm: "block", lg: "none" },
           }}
           onClick={() => setMenuActive(true)}
         />
@@ -76,6 +77,17 @@ const SchedulesRequests = () => {
             {makeRequestsActive ? <CreateRequest /> : null}
           </Grid>
         </Grid>
+        <Fab
+          sx={{
+            position: "absolute",
+            right: "2em",
+            bottom: "6em",
+            display: { xs: "block", sm: "none" },
+          }}
+          color="primary"
+        >
+          <MenuIcon onClick={() => setMenuActive(true)} />
+        </Fab>
       </Container>
     </ThemeProvider>
   );
