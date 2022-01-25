@@ -1,22 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ArticleIcon from "@mui/icons-material/Article";
-import Divider from "@mui/material/Divider";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
 import PostAddIcon from "@mui/icons-material/PostAdd";
+import ScheduleRequestContext from "../context/ScheduleRequestContext";
 import Typography from "@mui/material/Typography";
 
-const ScheduleRequestsNavigation = ({
-  setMyAppointmentsActive,
-  setMakeAppointmentsActive,
-  setMyRequestsActive,
-  setMakeRequestsActive,
-}) => {
+const ScheduleRequestsNavigation = ({}) => {
+  //setting context for navigations
+  const {
+    setMyAppointmentsActive,
+    setMakeAppointmentsActive,
+    setMyRequestsActive,
+    setMakeRequestsActive,
+  } = useContext(ScheduleRequestContext);
+
   //setting state for navigation of appointment
   const [myAppointments, setMyAppointments] = useState(true);
   const [makeAppointments, setMakeAppointments] = useState(false);
