@@ -37,7 +37,7 @@ const Requests = () => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <Container maxWidth="lg">
+    <Container sx={{ mt: 3 }} maxWidth="lg">
       <Grid container justifyContent="center">
         <Grid item xs={12} sm={10} lg={10}>
           <RequestsTable columns={columns} rows={userRequest} />
