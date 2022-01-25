@@ -77,11 +77,16 @@ const AppointmentDisplay = () => {
         </Grid>
         <Grid item xs={12} lg={12}>
           <Paper
-            sx={{ pt: 5, height: "100%", overflowY: "auto" }}
+            sx={{ pb: 6, height: "100%", overflowY: "auto" }}
             elevation={0}
           >
             <Typography
-              sx={{ color: "#3376b5", p: 2, fontWeight: 600 }}
+              sx={{
+                backgroundColor: "#3376b5",
+                color: "whitesmoke",
+                p: 2,
+                fontWeight: 400,
+              }}
               variant="h6"
             >
               My Appointments
