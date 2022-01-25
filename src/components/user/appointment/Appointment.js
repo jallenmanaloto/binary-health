@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ThemeProvider, useTheme } from "@mui/material/styles";
 import AppointmentDisplay from "./AppointmentDisplay";
-import AppointmentNavigation from "./AppointmentNavigation";
+import ScheduleAppointmentNavigation from "./AppointmentNavigation";
 import MakeAppointment from "./MakeAppointment";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -11,6 +11,8 @@ const Appointment = () => {
   //setting state for upstream value of navigations
   const [myAppointmentsActive, setMyAppointmentsActive] = useState(true);
   const [makeAppointmentsActive, setMakeAppointmentsActive] = useState(false);
+  const [myRequestsActive, setMyRequestsActive] = useState(false);
+  const [makeRequestsActive, setMakeRequestsActive] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
@@ -30,9 +32,11 @@ const Appointment = () => {
             md={0}
             lg={3}
           >
-            <AppointmentNavigation
+            <ScheduleAppointmentNavigation
               setMyAppointmentsActive={setMyAppointmentsActive}
               setMakeAppointmentsActive={setMakeAppointmentsActive}
+              setMyRequestsActive={setMyRequestsActive}
+              setMakeRequestsActive={setMakeRequestsActive}
             />
           </Grid>
           <Grid
