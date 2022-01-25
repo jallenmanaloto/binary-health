@@ -245,14 +245,14 @@ const MakeAppointment = () => {
             />
           </Grid>
           <Grid container item justifyContent="center">
-            <Grid item>
+            <Grid item xs={10} lg={10}>
               <Button
                 variant="contained"
                 sx={{
                   mt: { xs: 4, sm: 3, md: 3, lg: 2, xl: 10 },
                   ml: "50%",
                   transform: "translateX(-50%)",
-                  width: "10em",
+                  width: "100%",
                   height: "3em",
                   backgroundColor: "#3376b5",
                 }}
