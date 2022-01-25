@@ -20,8 +20,6 @@ const UserTopAppbar = () => {
   const { home, setHome, scheduleRequests, setScheduleRequests } =
     useContext(AppbarNavigation);
 
-  console.log(home);
-  console.log(scheduleRequests);
   //setting state for active navigation
   const [homeNav, setHomeNav] = useState(true);
   const [userNav, setUserNav] = useState(false);
