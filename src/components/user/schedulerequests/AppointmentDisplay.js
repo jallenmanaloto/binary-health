@@ -64,7 +64,8 @@ const AppointmentDisplay = () => {
         <Grid item xs={12} lg={12}>
           <Paper elevation={0}>
             <StaticDatePicker
-              displayStaticWrapperAs="desktop"
+              toolbarTitle="Your appointments"
+              orientation="landscape"
               openTo="day"
               value={date}
               onChange={(newValue) => {
