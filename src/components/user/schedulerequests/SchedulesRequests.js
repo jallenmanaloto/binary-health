@@ -20,7 +20,7 @@ const SchedulesRequests = () => {
     <ThemeProvider theme={theme}>
       <Container
         sx={{
-          mt: { sm: 6, lg: 6 },
+          mt: { xs: 2, sm: 6, lg: 6 },
           height: "94vh",
         }}
         maxWidth="lg"
