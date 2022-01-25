@@ -60,43 +60,41 @@ const AppointmentDisplay = () => {
   }, []);
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Container sx={{ height: "90vh" }} maxWidth="lg">
-        <Grid container justifyContent="center" spacing={2}>
-          <Grid item xs={12} lg={12}>
-            <Paper elevation={0}>
-              <StaticDatePicker
-                displayStaticWrapperAs="desktop"
-                openTo="day"
-                value={date}
-                onChange={(newValue) => {
-                  setDate(newValue);
-                }}
-                renderInput={(params) => <TextField {...params} />}
-              />
-            </Paper>
-          </Grid>
-          <Grid item xs={12} lg={12}>
-            <Paper
-              sx={{ pt: 5, height: "100%", overflowY: "auto" }}
-              elevation={0}
-            >
-              <Typography
-                sx={{ color: "#3376b5", p: 2, fontWeight: 600 }}
-                variant="h6"
-              >
-                My Appointments
-              </Typography>
-              {appointmentToday.length > 0 ? (
-                appointmentToday
-              ) : (
-                <Typography sx={{ p: 2, color: "#4d4d4d" }} variant="body1">
-                  No appointments today
-                </Typography>
-              )}
-            </Paper>
-          </Grid>
+      <Grid container justifyContent="center" spacing={2}>
+        <Grid item xs={12} lg={12}>
+          <Paper elevation={0}>
+            <StaticDatePicker
+              displayStaticWrapperAs="desktop"
+              openTo="day"
+              value={date}
+              onChange={(newValue) => {
+                setDate(newValue);
+              }}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </Paper>
         </Grid>
-      </Container>
+        <Grid item xs={12} lg={12}>
+          <Paper
+            sx={{ pt: 5, height: "100%", overflowY: "auto" }}
+            elevation={0}
+          >
+            <Typography
+              sx={{ color: "#3376b5", p: 2, fontWeight: 600 }}
+              variant="h6"
+            >
+              My Appointments
+            </Typography>
+            {appointmentToday.length > 0 ? (
+              appointmentToday
+            ) : (
+              <Typography sx={{ p: 2, color: "#4d4d4d" }} variant="body1">
+                No appointments today
+              </Typography>
+            )}
+          </Paper>
+        </Grid>
+      </Grid>
     </LocalizationProvider>
   );
 };
