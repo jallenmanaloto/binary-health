@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import AssignmentOutlinedIcon from "@mui/icons-material/AssignmentOutlined";
 import Container from "@mui/material/Container";
@@ -10,12 +9,10 @@ import Grid from "@mui/material/Grid";
 import HomeIcon from "@mui/icons-material/Home";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import IconButton from "@mui/material/IconButton";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import TodayIcon from "@mui/icons-material/Today";
 import TodayOutlinedIcon from "@mui/icons-material/TodayOutlined";
 import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
-import Typography from "@mui/material/Typography";
 
 const UserTopAppbar = () => {
   //setting state for active navigation
@@ -84,7 +81,7 @@ const UserTopAppbar = () => {
                 </Tooltip>
               </Grid>
               <Grid item md={3}>
-                <Tooltip title={<h3>Appointments</h3>}>
+                <Tooltip title={<h3>Schedules & Requests</h3>}>
                   <IconButton
                     sx={{
                       borderRadius: 3,
@@ -103,7 +100,7 @@ const UserTopAppbar = () => {
                 </Tooltip>
               </Grid>
               <Grid item md={3}>
-                <Tooltip title={<h3>Requests</h3>}>
+                <Tooltip title={<h3>Restrictions</h3>}>
                   <IconButton
                     sx={{
                       borderRadius: 3,
