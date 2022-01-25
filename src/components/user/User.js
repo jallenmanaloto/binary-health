@@ -11,10 +11,18 @@ const User = () => {
   //handling navigations for appbar
   const [home, setHome] = useState(true);
   const [scheduleRequests, setScheduleRequests] = useState(false);
+  const [restrictions, setRestrictions] = useState(false);
 
   return (
     <AppbarNavigation.Provider
-      value={{ home, setHome, scheduleRequests, setScheduleRequests }}
+      value={{
+        home,
+        setHome,
+        restrictions,
+        setRestrictions,
+        scheduleRequests,
+        setScheduleRequests,
+      }}
     >
       <div className={classes.root}>
         <UserTopAppbar />
