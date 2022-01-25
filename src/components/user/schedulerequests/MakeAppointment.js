@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import TextField from "@mui/material/TextField";
+import MobileTimePicker from "@mui/lab/MobileTimePicker";
 import TimePicker from "@mui/lab/TimePicker";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import MobileDatePicker from "@mui/lab/MobileDatePicker";
@@ -19,6 +20,7 @@ import MobileDatePicker from "@mui/lab/MobileDatePicker";
 const MakeAppointment = () => {
   //setting value for appointment type
   const [appointmentType, setAppointmentType] = useState("");
+  const [error, setError] = useState(false);
 
   //setting date for datepicker
   const [appointmentDate, setAppointmentDate] = useState(new Date());
@@ -66,14 +68,21 @@ const MakeAppointment = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Paper sx={{ height: "90vh", mt: { xs: 2, sm: -1, md: -1, lg: 0 } }}>
-        <Grid container>
-          <Grid item xs={12} sm={12} md={12} lg={12}>
+        <Grid container justifyContent="center">
+          <Grid
+            sx={{ backgroundColor: "#3376b5" }}
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+          >
             <Typography
               sx={{
                 p: 2,
-                textAlign: "center",
-                color: "#3376b5",
-                fontWeight: 600,
+                textAlign: "left",
+                color: "whitesmoke",
+                fontWeight: 400,
               }}
               variant="h5"
             >
@@ -82,19 +91,27 @@ const MakeAppointment = () => {
           </Grid>
           <Grid
             sx={{
-              mt: 14,
+              mt: { xs: 2, sm: 2, lg: 5 },
               display: "flex",
-              alignItems: "start",
-              justifyContent: "start",
+              flexDirection: "column",
             }}
             item
             xs={10}
             lg={10}
           >
-            <Typography sx={{ pr: 3, pl: 8, fontSize: "1.1rem" }} variant="h6">
+            <Typography
+              sx={{
+                pr: 3,
+                pb: 2,
+                fontSize: "1.1rem",
+                fontWeight: 600,
+                color: "#5c5c5c",
+              }}
+              variant="h6"
+            >
               Appointment Type:
             </Typography>
-            <FormControl sx={{ width: "50%" }}>
+            <FormControl sx={{ width: "100%" }}>
               <InputLabel>Choose appointment type</InputLabel>
               <Select
                 value={appointmentType}
@@ -113,15 +130,20 @@ const MakeAppointment = () => {
             sx={{
               mt: 6,
               display: "flex",
-              alignItems: "center",
-              justifyContent: "start",
+              flexDirection: "column",
             }}
             item
             xs={10}
             lg={10}
           >
             <Typography
-              sx={{ pr: 3, pb: 3, pl: 8, fontSize: "1.1rem", color: "#4d4d4d" }}
+              sx={{
+                pr: 3,
+                pb: 2,
+                fontSize: "1.1rem",
+                fontWeight: 600,
+                color: "#5c5c5c",
+              }}
               variant="h6"
             >
               Appointment Date:
@@ -133,7 +155,7 @@ const MakeAppointment = () => {
                 value={appointmentDate}
                 onChange={handleDateChange}
                 renderInput={(params) => (
-                  <TextField {...params} sx={{ width: "50%" }} />
+                  <TextField {...params} sx={{ width: "100%" }} />
                 )}
               />
             ) : (
@@ -143,7 +165,7 @@ const MakeAppointment = () => {
                 value={appointmentDate}
                 onChange={handleDateChange}
                 renderInput={(params) => (
-                  <TextField {...params} sx={{ width: "50%" }} />
+                  <TextField {...params} sx={{ width: "100%" }} />
                 )}
               />
             )}
@@ -152,35 +174,7 @@ const MakeAppointment = () => {
             sx={{
               mt: 6,
               display: "flex",
-              alignItems: "center",
-              justifyContent: "start",
-            }}
-            item
-            xs={10}
-            lg={10}
-          >
-            <Typography
-              sx={{ pr: 3, pb: 3, pl: 8, fontSize: "1.1rem", color: "#4d4d4d" }}
-              variant="h6"
-            >
-              Appointment Time:
-            </Typography>
-            <TimePicker
-              label="Time"
-              value={appointmentDate}
-              onChange={handleDateChange}
-              minutesStep={30}
-              renderInput={(params) => (
-                <TextField {...params} sx={{ width: "50%" }} />
-              )}
-            />
-          </Grid>
-          <Grid
-            sx={{
-              mt: 6,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "start",
+              flexDirection: "column",
             }}
             item
             xs={10}
@@ -189,17 +183,61 @@ const MakeAppointment = () => {
             <Typography
               sx={{
                 pr: 3,
-                pb: 12,
-                pl: 8,
+                pb: 2,
                 fontSize: "1.1rem",
-                color: "#4d4d4d",
+                fontWeight: 600,
+                color: "#5c5c5c",
+              }}
+              variant="h6"
+            >
+              Appointment Time:
+            </Typography>
+            {isSmallScreen ? (
+              <MobileTimePicker
+                label="For mobile"
+                value={appointmentDate}
+                onChange={handleDateChange}
+                renderInput={(params) => (
+                  <TextField {...params} sx={{ width: "100%" }} />
+                )}
+              />
+            ) : (
+              <TimePicker
+                label="Time"
+                value={appointmentDate}
+                onChange={handleDateChange}
+                minutesStep={30}
+                renderInput={(params) => (
+                  <TextField {...params} sx={{ width: "100%" }} />
+                )}
+              />
+            )}
+          </Grid>
+          <Grid
+            sx={{
+              mt: 6,
+              display: "flex",
+              flexDirection: "column",
+            }}
+            item
+            xs={10}
+            lg={10}
+          >
+            <Typography
+              sx={{
+                pr: 3,
+                pb: 2,
+                fontSize: "1.1rem",
+                fontWeight: 600,
+                color: "#5c5c5c",
               }}
               variant="h6"
             >
               Instructions:
             </Typography>
             <TextField
-              sx={{ ml: { xs: 5, sm: 6.5 }, width: "50%" }}
+              error={error}
+              sx={{ width: "100%" }}
               label="Disclosure"
               placeholder="Special conditions"
               rows={4}
@@ -211,11 +249,12 @@ const MakeAppointment = () => {
               <Button
                 variant="contained"
                 sx={{
-                  mt: { xs: 4, sm: 8, lg: 10 },
+                  mt: { xs: 4, sm: 3, md: 3, lg: 2, xl: 10 },
                   ml: "50%",
                   transform: "translateX(-50%)",
                   width: "10em",
                   height: "3em",
+                  backgroundColor: "#3376b5",
                 }}
                 onClick={handleSubmit}
               >
