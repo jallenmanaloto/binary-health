@@ -11,7 +11,7 @@ import Paper from "@mui/material/Paper";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import Typography from "@mui/material/Typography";
 
-const ScheduleAppointmentNavigation = ({
+const ScheduleRequestsNavigation = ({
   setMyAppointmentsActive,
   setMakeAppointmentsActive,
   setMyRequestsActive,
@@ -52,7 +52,7 @@ const ScheduleAppointmentNavigation = ({
     setMyRequests(true);
     setMakeRequests(false);
     setMyAppointmentsActive(false);
-    setMakeAppointmentsActive(true);
+    setMakeAppointmentsActive(false);
     setMyRequestsActive(true);
     setMakeRequestsActive(false);
   };
@@ -224,4 +224,4 @@ const ScheduleAppointmentNavigation = ({
   );
 };
 
-export default ScheduleAppointmentNavigation;
+export default ScheduleRequestsNavigation;
