@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AppBar from "@mui/material/AppBar";
+import AppbarNavigation from "../context/AppbarNavigation";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import AssignmentIcon from "@mui/icons-material/Assignment";
@@ -7,42 +8,59 @@ import AssignmentOutlinedIcon from "@mui/icons-material/AssignmentOutlined";
 import Grid from "@mui/material/Grid";
 import HomeIcon from "@mui/icons-material/Home";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import MenuIcon from "@mui/icons-material/Menu";
 import TodayIcon from "@mui/icons-material/Today";
 import TodayOutlinedIcon from "@mui/icons-material/TodayOutlined";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 
 const UserAppbar = () => {
+  //setting context
+  const { setHome, setRestrictions, setScheduleRequests } =
+    useContext(AppbarNavigation);
+
   //setting state for active navigation
   const [homeNav, setHomeNav] = useState(true);
   const [userNav, setUserNav] = useState(false);
-  const [requestNav, setRequestNav] = useState(false);
+  const [restrictionsNav, setRestrictionsNav] = useState(false);
   const [calendarNav, setCalendarNav] = useState(false);
 
   //handling active navigations
   const handleHomeNav = () => {
     setHomeNav(true);
     setUserNav(false);
-    setRequestNav(false);
+    setRestrictionsNav(false);
     setCalendarNav(false);
+    setHome(true);
+    setScheduleRequests(false);
+    setRestrictions(false);
   };
   const handleUserNav = () => {
     setUserNav(true);
     setHomeNav(false);
-    setRequestNav(false);
+    setRestrictionsNav(false);
     setCalendarNav(false);
+    setHome(false);
+    setScheduleRequests(false);
+    setRestrictions(false);
   };
-  const handleRequesteNav = () => {
-    setRequestNav(true);
+  const handleRestrictionsNav = () => {
+    setRestrictionsNav(true);
     setHomeNav(false);
     setUserNav(false);
     setCalendarNav(false);
+    setHome(false);
+    setScheduleRequests(false);
+    setRestrictions(true);
   };
   const handleCalendarNav = () => {
     setCalendarNav(true);
     setHomeNav(false);
     setUserNav(false);
-    setRequestNav(false);
+    setRestrictionsNav(false);
+    setHome(false);
+    setScheduleRequests(true);
+    setRestrictions(false);
   };
   return (
     <div>
@@ -55,10 +73,28 @@ const UserAppbar = () => {
           <Grid
             container
             flexDirection="row"
-            justifyContent="center"
+            justifyContent="space-between"
             spacing={2}
           >
-            <Grid item xs={3}>
+            <Grid item xs={2}>
+              <IconButton
+                sx={{
+                  borderRadius: 3,
+                  width: "100%",
+                  p: 1,
+                }}
+              >
+                <MenuIcon
+                  sx={{
+                    color: "gray",
+                    fontSize: "2.25rem",
+                    cursor: "pointer",
+                    display: { xs: "block", lg: "none" },
+                  }}
+                />
+              </IconButton>
+            </Grid>
+            <Grid item xs={2}>
               <IconButton
                 sx={{
                   borderRadius: 3,
@@ -74,7 +110,7 @@ const UserAppbar = () => {
                 )}
               </IconButton>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               <IconButton
                 sx={{
                   borderRadius: 3,
@@ -89,15 +125,15 @@ const UserAppbar = () => {
                 )}
               </IconButton>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               <IconButton
                 sx={{
                   borderRadius: 3,
                   width: "100%",
                 }}
-                onClick={handleRequesteNav}
+                onClick={handleRestrictionsNav}
               >
-                {requestNav ? (
+                {restrictionsNav ? (
                   <AssignmentIcon
                     sx={{ color: "#3376b5", fontSize: "2.25rem" }}
                   />
@@ -106,7 +142,7 @@ const UserAppbar = () => {
                 )}
               </IconButton>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               <IconButton
                 sx={{
                   borderRadius: 3,
