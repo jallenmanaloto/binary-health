@@ -17,43 +17,51 @@ import Tooltip from "@mui/material/Tooltip";
 
 const UserTopAppbar = () => {
   //setting context
-  const { home, setHome, scheduleRequests, setScheduleRequests } =
+  const { setHome, setRestrictions, setScheduleRequests } =
     useContext(AppbarNavigation);
 
   //setting state for active navigation
   const [homeNav, setHomeNav] = useState(true);
   const [userNav, setUserNav] = useState(false);
-  const [requestNav, setRequestNav] = useState(false);
+  const [restrictionsNav, setRestrictionsNav] = useState(false);
   const [calendarNav, setCalendarNav] = useState(false);
 
   //handling active navigations
   const handleHomeNav = () => {
     setHomeNav(true);
     setUserNav(false);
-    setRequestNav(false);
+    setRestrictionsNav(false);
     setCalendarNav(false);
     setHome(true);
     setScheduleRequests(false);
+    setRestrictions(false);
   };
   const handleUserNav = () => {
     setUserNav(true);
     setHomeNav(false);
-    setRequestNav(false);
+    setRestrictionsNav(false);
     setCalendarNav(false);
+    setHome(false);
+    setScheduleRequests(false);
+    setRestrictions(false);
   };
-  const handleRequesteNav = () => {
-    setRequestNav(true);
+  const handleRestrictionsNav = () => {
+    setRestrictionsNav(true);
     setHomeNav(false);
     setUserNav(false);
     setCalendarNav(false);
+    setHome(false);
+    setScheduleRequests(false);
+    setRestrictions(true);
   };
   const handleCalendarNav = () => {
     setCalendarNav(true);
     setHomeNav(false);
     setUserNav(false);
-    setRequestNav(false);
+    setRestrictionsNav(false);
     setHome(false);
     setScheduleRequests(true);
+    setRestrictions(false);
   };
 
   return (
@@ -115,9 +123,9 @@ const UserTopAppbar = () => {
                       borderRadius: 3,
                       width: "100%",
                     }}
-                    onClick={handleRequesteNav}
+                    onClick={handleRestrictionsNav}
                   >
-                    {requestNav ? (
+                    {restrictionsNav ? (
                       <AssignmentIcon
                         sx={{ color: "#3376b5", fontSize: "2.25rem" }}
                       />
