@@ -9,6 +9,7 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import HomeIcon from "@mui/icons-material/Home";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import TodayIcon from "@mui/icons-material/Today";
 import TodayOutlinedIcon from "@mui/icons-material/TodayOutlined";
@@ -75,6 +76,14 @@ const UserTopAppbar = () => {
         elevation={0}
       >
         <Toolbar sx={{ p: 1 }}>
+          <MenuIcon
+            sx={{
+              color: "gray",
+              fontSize: "2.25rem",
+              cursor: "pointer",
+              display: { xs: "block", lg: "none" },
+            }}
+          />
           <Container maxWidth="md">
             <Grid container justifyContent="space-evenly" spacing={0}>
               <Grid item md={3}>
