@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ThemeProvider, useTheme } from "@mui/material/styles";
 import AppointmentDisplay from "./AppointmentDisplay";
+import CreateRequest from "./CreateRequest";
 import ScheduleRequestsNavigation from "./ScheduleRequestsNavigation";
 import MakeAppointment from "./MakeAppointment";
 import MyRequests from "./MyRequests";
@@ -51,6 +52,7 @@ const SchedulesRequests = () => {
             {myAppointmentsActive ? <AppointmentDisplay /> : null}
             {makeAppointmentsActive ? <MakeAppointment /> : null}
             {myRequestsActive ? <MyRequests /> : null}
+            {makeRequestsActive ? <CreateRequest /> : null}
           </Grid>
         </Grid>
       </Container>
