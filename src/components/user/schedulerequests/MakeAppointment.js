@@ -150,7 +150,7 @@ const MakeAppointment = () => {
             </Typography>
             {isSmallScreen ? (
               <MobileDatePicker
-                label="Date mobile"
+                label="Date"
                 inputFormat="MM/dd/yyyy"
                 value={appointmentDate}
                 onChange={handleDateChange}
@@ -160,7 +160,7 @@ const MakeAppointment = () => {
               />
             ) : (
               <DesktopDatePicker
-                label="Date desktop"
+                label="Date"
                 inputFormat="MM/dd/yyyy"
                 value={appointmentDate}
                 onChange={handleDateChange}
@@ -194,7 +194,7 @@ const MakeAppointment = () => {
             </Typography>
             {isSmallScreen ? (
               <MobileTimePicker
-                label="For mobile"
+                label="Time"
                 value={appointmentDate}
                 onChange={handleDateChange}
                 renderInput={(params) => (
