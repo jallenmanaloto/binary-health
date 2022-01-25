@@ -67,7 +67,7 @@ const MakeAppointment = () => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Paper sx={{ height: "90vh", mt: { xs: 2, sm: -1, md: -1, lg: 0 } }}>
+      <Paper sx={{ height: "90vh", mt: { xs: 0, sm: -1, md: -1, lg: 0 } }}>
         <Grid container justifyContent="center">
           <Grid
             sx={{ backgroundColor: "#3376b5" }}
