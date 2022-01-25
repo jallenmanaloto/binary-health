@@ -73,28 +73,10 @@ const UserAppbar = () => {
           <Grid
             container
             flexDirection="row"
-            justifyContent="space-between"
-            spacing={2}
+            justifyContent="center"
+            spacing={0}
           >
-            <Grid item xs={2}>
-              <IconButton
-                sx={{
-                  borderRadius: 3,
-                  width: "100%",
-                  p: 1,
-                }}
-              >
-                <MenuIcon
-                  sx={{
-                    color: "gray",
-                    fontSize: "2.25rem",
-                    cursor: "pointer",
-                    display: { xs: "block", lg: "none" },
-                  }}
-                />
-              </IconButton>
-            </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={3}>
               <IconButton
                 sx={{
                   borderRadius: 3,
@@ -110,7 +92,7 @@ const UserAppbar = () => {
                 )}
               </IconButton>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={3}>
               <IconButton
                 sx={{
                   borderRadius: 3,
@@ -125,7 +107,7 @@ const UserAppbar = () => {
                 )}
               </IconButton>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={3}>
               <IconButton
                 sx={{
                   borderRadius: 3,
@@ -142,7 +124,7 @@ const UserAppbar = () => {
                 )}
               </IconButton>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={3}>
               <IconButton
                 sx={{
                   borderRadius: 3,
