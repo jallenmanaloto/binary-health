@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AppBar from "@mui/material/AppBar";
+import AppbarNavigation from "../context/AppbarNavigation";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import AssignmentIcon from "@mui/icons-material/Assignment";
@@ -15,6 +16,12 @@ import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
 
 const UserTopAppbar = () => {
+  //setting context
+  const { home, setHome, scheduleRequests, setScheduleRequests } =
+    useContext(AppbarNavigation);
+
+  console.log(home);
+  console.log(scheduleRequests);
   //setting state for active navigation
   const [homeNav, setHomeNav] = useState(true);
   const [userNav, setUserNav] = useState(false);
@@ -27,6 +34,8 @@ const UserTopAppbar = () => {
     setUserNav(false);
     setRequestNav(false);
     setCalendarNav(false);
+    setHome(true);
+    setScheduleRequests(false);
   };
   const handleUserNav = () => {
     setUserNav(true);
@@ -45,6 +54,8 @@ const UserTopAppbar = () => {
     setHomeNav(false);
     setUserNav(false);
     setRequestNav(false);
+    setHome(false);
+    setScheduleRequests(true);
   };
 
   return (
