@@ -3,6 +3,7 @@ import { ThemeProvider, useTheme } from "@mui/material/styles";
 import AppointmentDisplay from "./AppointmentDisplay";
 import ScheduleRequestsNavigation from "./ScheduleRequestsNavigation";
 import MakeAppointment from "./MakeAppointment";
+import MyRequests from "./MyRequests";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 
@@ -49,6 +50,7 @@ const SchedulesRequests = () => {
           >
             {myAppointmentsActive ? <AppointmentDisplay /> : null}
             {makeAppointmentsActive ? <MakeAppointment /> : null}
+            {myRequestsActive ? <MyRequests /> : null}
           </Grid>
         </Grid>
       </Container>
