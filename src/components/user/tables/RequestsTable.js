@@ -19,7 +19,7 @@ const RequestsTable = ({ columns, rows }) => {
     setPage(newPage);
   };
   return (
-    <Paper sx={{ width: "100%", mt: 3 }}>
+    <Paper sx={{ width: "100%" }}>
       <Typography
         sx={{ pt: 2, pb: 4, pl: 2, color: "#3376b5", fontWeight: "600" }}
         variant="h6"
