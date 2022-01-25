@@ -27,7 +27,7 @@ const RequestsTable = ({ columns, rows }) => {
         My Requests
       </Typography>
       <TableContainer sx={{ Height: 750 }}>
-        <Table aria-label="table" hover>
+        <Table aria-label="table" hover="true">
           <TableHead>
             <TableRow>
               {columns.map((column) => (
