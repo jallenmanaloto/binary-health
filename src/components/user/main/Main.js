@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import AppbarNavigation from "../context/AppbarNavigation";
 import Container from "@mui/material/Container";
+import Restrictions from "../restrictions/Restrictions";
 import SchedulesRequests from "../schedulerequests/SchedulesRequests";
 import UserHome from "../userhome/UserHome";
 
 const Main = () => {
   //setting context
-  const { home, setHome, scheduleRequests, setScheduleRequests } =
-    useContext(AppbarNavigation);
+  const { home, restrictions, scheduleRequests } = useContext(AppbarNavigation);
+
   return (
     <Container
       maxWidth="xl"
@@ -19,6 +20,7 @@ const Main = () => {
     >
       {home ? <UserHome /> : null}
       {scheduleRequests ? <SchedulesRequests /> : null}
+      {restrictions ? <Restrictions /> : null}
     </Container>
   );
 };
