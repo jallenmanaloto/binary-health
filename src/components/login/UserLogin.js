@@ -27,9 +27,23 @@ const UserLogin = () => {
   const imageStyle = loginImage();
   const navigate = useNavigate();
 
+  //setting axios for amadeus authentication
+  const axios = require("axios");
+  const qs = require("qs");
+  const data = qs.stringify({
+    grant_type: "client_credentials",
+    client_id: "n1Um3XcrZMZOXddVkoRccGASpk080nT8",
+    client_secret: "C3U3vXyHrVrTpLgt",
+  });
+  const config = {
+    method: "post",
+    url: "https://test.api.amadeus.com/v1/security/oauth2/token",
+    headers: {},
+    data: data,
+  };
+
   //Setting context
-  const { setCurrentUser, setHeaders, currentUser, headers } =
-    useContext(CurrentUser);
+  const { setAmadeus, setCurrentUser, setHeaders } = useContext(CurrentUser);
 
   //Declaring states for textfields value
   const [email, setEmail] = useState("");
@@ -109,13 +123,22 @@ const UserLogin = () => {
           ? localStorage.setItem("userAuth", JSON.stringify(auth))
           : sessionStorage.setItem("userAuth", JSON.stringify(auth));
 
-        if (res.data.data.role === "admin") {
-          navigate("/admin");
-        }
+        // if (res.data.data.role === "admin") {
+        navigate("/user");
+        // }
       })
       .catch((err) => {
         handleError();
         console.log(err);
+      });
+
+    axios(config)
+      .then((response) => {
+        const { access_token: token } = response.data;
+        setAmadeus({ token: token });
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
