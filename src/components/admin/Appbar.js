@@ -47,7 +47,7 @@ const Appbar = () => {
         uid: headers.uid,
       },
     })
-      .then(navigate("/logout"))
+      .then(navigate("/login"))
       .catch((err) => {
         console.log(err);
       });
