@@ -5,6 +5,7 @@ import DrawerLeft from "./schedulerequests/DrawerLeft";
 import Main from "./main/Main";
 import ScheduleRequestContext from "./context/ScheduleRequestContext";
 import UserAppbar from "./appbar/UserBottomAppbar";
+import UserDetailsNav from "./context/UserDetailsNav";
 import UserTopAppbar from "./appbar/UserTopAppbar";
 
 const User = () => {
@@ -17,11 +18,16 @@ const User = () => {
   const [scheduleRequests, setScheduleRequests] = useState(false);
   const [userDetails, setUserDetails] = useState(false);
 
-  //hanndling navigations for requests
+  //handling navigations for requests
   const [myAppointmentsActive, setMyAppointmentsActive] = useState(true);
   const [makeAppointmentsActive, setMakeAppointmentsActive] = useState(false);
   const [myRequestsActive, setMyRequestsActive] = useState(false);
   const [makeRequestsActive, setMakeRequestsActive] = useState(false);
+
+  //handling navigation for user details
+  const [personal, setPersonal] = useState(true);
+  const [qr, setQr] = useState(false);
+  const [activities, setActivities] = useState(false);
 
   return (
     <AppbarNavigation.Provider
@@ -50,12 +56,23 @@ const User = () => {
           setMakeRequestsActive,
         }}
       >
-        <div className={classes.root}>
-          <UserTopAppbar />
-          <DrawerLeft />
-          <Main />
-          <UserAppbar />
-        </div>
+        <UserDetailsNav.Provider
+          value={{
+            activities,
+            setActivities,
+            personal,
+            setPersonal,
+            qr,
+            setQr,
+          }}
+        >
+          <div className={classes.root}>
+            <UserTopAppbar />
+            <DrawerLeft />
+            <Main />
+            <UserAppbar />
+          </div>
+        </UserDetailsNav.Provider>
       </ScheduleRequestContext.Provider>
     </AppbarNavigation.Provider>
   );
