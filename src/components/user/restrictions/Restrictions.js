@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import CountryRestriction from "./CountryRestriction";
 import CountrySearch from "../context/CountrySearch";
 import SearchCountry from "./SearchCountry";
 import Container from "@mui/material/Container";
@@ -22,7 +23,8 @@ const Restrictions = () => {
     //tracingApplicationText: res.data.areaAccessRestriction.tracingApplication.text - statement for tracing application of country
     //quarantineModalityDate: res.data.areaAccessRestriction.quarantineModality.date - date for implementation on quarantine requirement of country
     //quarantineModalityText:  res.data.areaAccessRestriction.quarantineModality.text - statement for quarantine of inbound travellers from specified country
-
+    details: false,
+    countryName: "",
     summary: "",
     riskLevel: "",
     diseaseCases: "",
@@ -62,12 +64,8 @@ const Restrictions = () => {
               <Grid item xs={12} lg={12}>
                 <SearchCountry />
               </Grid>
-              <Grid item>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: countryRestriction.entryRestrictionText,
-                  }}
-                />
+              <Grid item xs={12} lg={12}>
+                <CountryRestriction />
               </Grid>
             </Grid>
           </Grid>
