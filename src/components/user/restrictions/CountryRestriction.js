@@ -63,14 +63,12 @@ const CountryRestriction = () => {
           />
         </div>
       </Grid>
+
       <Grid className={classes.grid} item xs={10} lg={10}>
         <div className={classes.statements}>
           {countryRestriction.details ? (
-            <Typography
-              variant="body1"
-              sx={{ fontWeight: 600, pr: 1, width: "40%" }}
-            >
-              Documents Declaration:
+            <Typography variant="body1" sx={{ fontWeight: 600, pr: 1 }}>
+              Documents:
             </Typography>
           ) : null}
           <div
@@ -99,14 +97,6 @@ const CountryRestriction = () => {
       </Grid>
       <Grid className={classes.grid} item xs={10} lg={10}>
         <div className={classes.statements}>
-          {countryRestriction.details ? (
-            <Typography
-              variant="body1"
-              sx={{ fontWeight: 600, pr: 1, width: "40%" }}
-            >
-              Test on arrival:
-            </Typography>
-          ) : null}
           <div
             dangerouslySetInnerHTML={{
               __html: countryRestriction.diseaseTestingText,
