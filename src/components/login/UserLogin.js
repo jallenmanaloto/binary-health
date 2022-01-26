@@ -96,6 +96,14 @@ const UserLogin = () => {
       },
     })
       .then((res) => {
+        const userDetails = {
+          email: res.data.data.email,
+          first_name: res.data.data.first_name,
+          middle_name: res.data.data.middle_name,
+          last_name: res.data.data.last_name,
+          covid_status: res.data.data.covid_status,
+          role: res.data.data.role,
+        };
         setCurrentUser({
           email: res.data.data.email,
           first_name: res.data.data.first_name,
@@ -104,6 +112,8 @@ const UserLogin = () => {
           covid_status: res.data.data.covid_status,
           role: res.data.data.role,
         });
+
+        localStorage.setItem("userDetails", JSON.stringify(userDetails));
 
         const { "access-token": token } = res.headers;
         const auth = {
@@ -123,9 +133,8 @@ const UserLogin = () => {
           ? localStorage.setItem("userAuth", JSON.stringify(auth))
           : sessionStorage.setItem("userAuth", JSON.stringify(auth));
 
-        // if (res.data.data.role === "admin") {
+        //navigating to Dashboard component
         navigate("/user");
-        // }
       })
       .catch((err) => {
         handleError();
@@ -136,6 +145,11 @@ const UserLogin = () => {
       .then((response) => {
         const { access_token: token } = response.data;
         setAmadeus({ token: token });
+        const amadeusToken = {
+          token: token,
+        };
+
+        localStorage.setItem("amadeusToken", JSON.stringify(amadeusToken));
       })
       .catch((error) => {
         console.log(error);
