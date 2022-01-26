@@ -54,6 +54,27 @@ export const chartsStyle = makeStyles({
   },
 });
 
+export const countryRestrictionStyle = makeStyles({
+  container: {
+    display: "flex",
+    width: "100%",
+    paddingBottom: 6,
+    marginLeft: "4rem",
+  },
+  grid: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "start",
+    justifyContent: "center",
+  },
+  statements: {
+    display: "flex",
+    flexDirection: "column",
+    paddingBottom: 15,
+    marginLeft: "4rem",
+  },
+});
+
 export const drawerStyle = makeStyles({
   root: {
     display: "flex",
@@ -72,8 +93,8 @@ export const drawerStyle = makeStyles({
 
 export const establishmentStyle = makeStyles({
   selectContainer: {
-    display: "flex",
-    justifyContent: "start",
+    // display: "flex",
+    // justifyContent: "start",
   },
 });
 
