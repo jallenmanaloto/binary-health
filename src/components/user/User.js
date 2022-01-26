@@ -15,6 +15,7 @@ const User = () => {
   const [menuActive, setMenuActive] = useState(false);
   const [restrictions, setRestrictions] = useState(false);
   const [scheduleRequests, setScheduleRequests] = useState(false);
+  const [userDetails, setUserDetails] = useState(false);
 
   //hanndling navigations for requests
   const [myAppointmentsActive, setMyAppointmentsActive] = useState(true);
@@ -33,6 +34,8 @@ const User = () => {
         setRestrictions,
         scheduleRequests,
         setScheduleRequests,
+        userDetails,
+        setUserDetails,
       }}
     >
       <ScheduleRequestContext.Provider
