@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
+import CurrentUser from "../../auth/CurrentUser";
 import countries from "./Countries";
 import CountrySearch from "../context/CountrySearch";
 import Grid from "@mui/material/Grid";
@@ -14,6 +15,8 @@ const SearchCountry = () => {
   //setting contexts for getting info on restrictions
   const { countryRestriction, setCountryRestriction } =
     useContext(CountrySearch);
+
+  const { amadeus } = useContext(CurrentUser);
 
   //setting state for value of search input
   const [searchTerm, setSearchTerm] = useState("");
@@ -37,45 +40,47 @@ const SearchCountry = () => {
     })
     .map((country) => {
       const handleGetCountry = () => {
-        // axios({
-        //   method: "GET",
-        //   url: `https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=${country.code}`,
-        //   headers: {
-        //     Authorization: `Bearer t6G3L9dUGX8Mn2RyXgvLAqLMbSO8`,
-        //   },
-        // })
-        //   .then((res) => {
-        //     setCountryRestriction({
-        //       countryName: res.data.data.area.name,
-        //       summary: res.data.data.summary,
-        //       riskLevel: res.data.data.diseaseRiskLevel,
-        //       diseaseCases: res.data.data.diseaseCases.confirmed,
-        //       declarationDocumentsDate:
-        //         res.data.data.areaAccessRestriction.declarationDocuments.date,
-        //       declarationDocumentsText:
-        //         res.data.data.areaAccessRestriction.declarationDocuments.text,
-        //       travelDocumentationLink:
-        //         res.data.data.areaAccessRestriction.declarationDocuments
-        //           .travelDocumentationLink,
-        //       entryRestrictionDate:
-        //         res.data.data.areaAccessRestriction.entry.date,
-        //       entryRestrictionText:
-        //         res.data.data.areaAccessRestriction.entry.text,
-        //       diseaseTestingDate:
-        //         res.data.data.areaAccessRestriction.diseaseTesting.date,
-        //       diseaseTestingText:
-        //         res.data.data.areaAccessRestriction.diseaseTesting.text,
-        //       tracingApplicationDate:
-        //         res.data.data.areaAccessRestriction.tracingApplication.date,
-        //       tracingApplicationText:
-        //         res.data.data.areaAccessRestriction.tracingApplication.text,
-        //       quarantineModalityDate:
-        //         res.data.data.areaAccessRestriction.quarantineModality.date,
-        //       quarantineModalityText:
-        //         res.data.data.areaAccessRestriction.quarantineModality.text,
-        //     });
-        //   })
-        //   .catch((err) => console.log(err));
+        axios({
+          method: "GET",
+          url: `https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=${country.code}`,
+          headers: {
+            Authorization: `Bearer ${amadeus.token}`,
+          },
+        })
+          .then((res) => {
+            setCountryRestriction({
+              details: true,
+              countryName: res.data.data.area.name,
+              summary: res.data.data.summary,
+              riskLevel: res.data.data.diseaseRiskLevel,
+              diseaseCases: res.data.data.diseaseCases.confirmed,
+              declarationDocumentsDate:
+                res.data.data.areaAccessRestriction.declarationDocuments.date,
+              declarationDocumentsText:
+                res.data.data.areaAccessRestriction.declarationDocuments.text,
+              travelDocumentationLink:
+                res.data.data.areaAccessRestriction.declarationDocuments
+                  .travelDocumentationLink,
+              entryRestrictionDate:
+                res.data.data.areaAccessRestriction.entry.date,
+              entryRestrictionText:
+                res.data.data.areaAccessRestriction.entry.text,
+              diseaseTestingDate:
+                res.data.data.areaAccessRestriction.diseaseTesting.date,
+              diseaseTestingText:
+                res.data.data.areaAccessRestriction.diseaseTesting.text,
+              tracingApplicationDate:
+                res.data.data.areaAccessRestriction.tracingApplication.date,
+              tracingApplicationText:
+                res.data.data.areaAccessRestriction.tracingApplication.text,
+              quarantineModalityDate:
+                res.data.data.areaAccessRestriction.quarantineModality.date,
+              quarantineModalityText:
+                res.data.data.areaAccessRestriction.quarantineModality.text,
+            });
+          })
+          .catch((err) => console.log(err));
+        setSearchTerm("");
       };
       return (
         <MenuItem key={country.name} onClick={handleGetCountry}>
@@ -83,8 +88,6 @@ const SearchCountry = () => {
         </MenuItem>
       );
     });
-
-  console.log(countryRestriction);
 
   return (
     <Grid sx={{ height: "12em" }} container justifyContent="center">
@@ -101,6 +104,7 @@ const SearchCountry = () => {
       >
         <TextField
           type="text"
+          value={searchTerm}
           fullWidth
           placeholder="Search country"
           InputProps={{
