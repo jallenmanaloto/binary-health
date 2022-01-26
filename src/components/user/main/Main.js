@@ -3,11 +3,13 @@ import AppbarNavigation from "../context/AppbarNavigation";
 import Container from "@mui/material/Container";
 import Restrictions from "../restrictions/Restrictions";
 import SchedulesRequests from "../schedulerequests/SchedulesRequests";
+import UserDetails from "../userdetails/UserDetails";
 import UserHome from "../userhome/UserHome";
 
 const Main = () => {
   //setting context
-  const { home, restrictions, scheduleRequests } = useContext(AppbarNavigation);
+  const { home, restrictions, scheduleRequests, userDetails } =
+    useContext(AppbarNavigation);
 
   return (
     <Container
@@ -21,6 +23,7 @@ const Main = () => {
       {home ? <UserHome /> : null}
       {scheduleRequests ? <SchedulesRequests /> : null}
       {restrictions ? <Restrictions /> : null}
+      {userDetails ? <UserDetails /> : null}
     </Container>
   );
 };
