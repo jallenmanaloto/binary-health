@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import AppbarNavigation from "../context/AppbarNavigation";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -16,51 +16,42 @@ import IconButton from "@mui/material/IconButton";
 
 const UserAppbar = () => {
   //setting context
-  const { setHome, setRestrictions, setScheduleRequests } =
-    useContext(AppbarNavigation);
-
-  //setting state for active navigation
-  const [homeNav, setHomeNav] = useState(true);
-  const [userNav, setUserNav] = useState(false);
-  const [restrictionsNav, setRestrictionsNav] = useState(false);
-  const [calendarNav, setCalendarNav] = useState(false);
+  const {
+    home,
+    setHome,
+    setMenuActive,
+    restrictions,
+    setRestrictions,
+    scheduleRequests,
+    setScheduleRequests,
+    userDetails,
+    setUserDetails,
+  } = useContext(AppbarNavigation);
 
   //handling active navigations
   const handleHomeNav = () => {
-    setHomeNav(true);
-    setUserNav(false);
-    setRestrictionsNav(false);
-    setCalendarNav(false);
     setHome(true);
     setScheduleRequests(false);
     setRestrictions(false);
+    setUserDetails(false);
   };
   const handleUserNav = () => {
-    setUserNav(true);
-    setHomeNav(false);
-    setRestrictionsNav(false);
-    setCalendarNav(false);
     setHome(false);
     setScheduleRequests(false);
     setRestrictions(false);
+    setUserDetails(true);
   };
   const handleRestrictionsNav = () => {
-    setRestrictionsNav(true);
-    setHomeNav(false);
-    setUserNav(false);
-    setCalendarNav(false);
     setHome(false);
     setScheduleRequests(false);
     setRestrictions(true);
+    setUserDetails(false);
   };
   const handleCalendarNav = () => {
-    setCalendarNav(true);
-    setHomeNav(false);
-    setUserNav(false);
-    setRestrictionsNav(false);
     setHome(false);
     setScheduleRequests(true);
     setRestrictions(false);
+    setUserDetails(false);
   };
   return (
     <div>
@@ -85,7 +76,7 @@ const UserAppbar = () => {
                 }}
                 onClick={handleHomeNav}
               >
-                {homeNav ? (
+                {home ? (
                   <HomeIcon sx={{ color: "#3376b5", fontSize: "2.25rem" }} />
                 ) : (
                   <HomeOutlinedIcon sx={{ fontSize: "2.25rem" }} />
@@ -100,7 +91,7 @@ const UserAppbar = () => {
                 }}
                 onClick={handleCalendarNav}
               >
-                {calendarNav ? (
+                {scheduleRequests ? (
                   <TodayIcon sx={{ color: "#3376b5", fontSize: "2.25rem" }} />
                 ) : (
                   <TodayOutlinedIcon sx={{ fontSize: "2.25rem" }} />
@@ -115,7 +106,7 @@ const UserAppbar = () => {
                 }}
                 onClick={handleRestrictionsNav}
               >
-                {restrictionsNav ? (
+                {restrictions ? (
                   <AssignmentIcon
                     sx={{ color: "#3376b5", fontSize: "2.25rem" }}
                   />
@@ -132,7 +123,7 @@ const UserAppbar = () => {
                 }}
                 onClick={handleUserNav}
               >
-                {userNav ? (
+                {userDetails ? (
                   <AccountCircleIcon
                     sx={{ color: "#3376b5", fontSize: "2.25rem" }}
                   />

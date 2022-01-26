@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import AppbarNavigation from "../context/AppbarNavigation";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -9,7 +9,6 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import HomeIcon from "@mui/icons-material/Home";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import TodayIcon from "@mui/icons-material/Today";
 import TodayOutlinedIcon from "@mui/icons-material/TodayOutlined";
@@ -18,51 +17,42 @@ import Tooltip from "@mui/material/Tooltip";
 
 const UserTopAppbar = () => {
   //setting context
-  const { setHome, setMenuActive, setRestrictions, setScheduleRequests } =
-    useContext(AppbarNavigation);
-
-  //setting state for active navigation
-  const [homeNav, setHomeNav] = useState(true);
-  const [userNav, setUserNav] = useState(false);
-  const [restrictionsNav, setRestrictionsNav] = useState(false);
-  const [calendarNav, setCalendarNav] = useState(false);
+  const {
+    home,
+    setHome,
+    setMenuActive,
+    restrictions,
+    setRestrictions,
+    scheduleRequests,
+    setScheduleRequests,
+    userDetails,
+    setUserDetails,
+  } = useContext(AppbarNavigation);
 
   //handling active navigations
   const handleHomeNav = () => {
-    setHomeNav(true);
-    setUserNav(false);
-    setRestrictionsNav(false);
-    setCalendarNav(false);
     setHome(true);
     setScheduleRequests(false);
     setRestrictions(false);
+    setUserDetails(false);
   };
   const handleUserNav = () => {
-    setUserNav(true);
-    setHomeNav(false);
-    setRestrictionsNav(false);
-    setCalendarNav(false);
     setHome(false);
     setScheduleRequests(false);
     setRestrictions(false);
+    setUserDetails(true);
   };
   const handleRestrictionsNav = () => {
-    setRestrictionsNav(true);
-    setHomeNav(false);
-    setUserNav(false);
-    setCalendarNav(false);
     setHome(false);
     setScheduleRequests(false);
     setRestrictions(true);
+    setUserDetails(false);
   };
   const handleCalendarNav = () => {
-    setCalendarNav(true);
-    setHomeNav(false);
-    setUserNav(false);
-    setRestrictionsNav(false);
     setHome(false);
     setScheduleRequests(true);
     setRestrictions(false);
+    setUserDetails(false);
   };
 
   return (
@@ -77,15 +67,6 @@ const UserTopAppbar = () => {
         elevation={0}
       >
         <Toolbar sx={{ p: 1 }}>
-          {/* <MenuIcon
-            sx={{
-              color: "gray",
-              fontSize: "2.25rem",
-              cursor: "pointer",
-              display: { xs: "block", lg: "none" },
-            }}
-            onClick={() => setMenuActive(true)}
-          /> */}
           <Container maxWidth="md">
             <Grid container justifyContent="space-evenly" spacing={0}>
               <Grid item md={3}>
@@ -98,7 +79,7 @@ const UserTopAppbar = () => {
                     }}
                     onClick={handleHomeNav}
                   >
-                    {homeNav ? (
+                    {home ? (
                       <HomeIcon
                         sx={{ color: "#3376b5", fontSize: "2.25rem" }}
                       />
@@ -117,7 +98,7 @@ const UserTopAppbar = () => {
                     }}
                     onClick={handleCalendarNav}
                   >
-                    {calendarNav ? (
+                    {scheduleRequests ? (
                       <TodayIcon
                         sx={{ color: "#3376b5", fontSize: "2.25rem" }}
                       />
@@ -136,7 +117,7 @@ const UserTopAppbar = () => {
                     }}
                     onClick={handleRestrictionsNav}
                   >
-                    {restrictionsNav ? (
+                    {restrictions ? (
                       <AssignmentIcon
                         sx={{ color: "#3376b5", fontSize: "2.25rem" }}
                       />
@@ -155,7 +136,7 @@ const UserTopAppbar = () => {
                     }}
                     onClick={handleUserNav}
                   >
-                    {userNav ? (
+                    {userDetails ? (
                       <AccountCircleIcon
                         sx={{ color: "#3376b5", fontSize: "2.25rem" }}
                       />
