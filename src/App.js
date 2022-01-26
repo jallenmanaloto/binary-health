@@ -36,6 +36,10 @@ function App() {
     localStorage.getItem("userAuth")
       ? setHeaders(JSON.parse(localStorage.getItem("userAuth")))
       : setHeaders(JSON.parse(sessionStorage.getItem("userAuth")));
+
+    localStorage.getItem("userDetails")
+      ? setCurrentUser(JSON.parse(localStorage.getItem("userDetails")))
+      : setCurrentUser(JSON.parse(sessionStorage.getItem("userDetails")));
   }, []);
 
   return (
