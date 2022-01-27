@@ -50,11 +50,11 @@ const EstablishmentTable = ({ columns, rows }) => {
               };
               return (
                 <TableRow hover key={key}>
-                  <TableCell align="center">{row.first_name}</TableCell>
-                  <TableCell align="center">{row.middle_name}</TableCell>
-                  <TableCell align="center">{row.last_name}</TableCell>
-                  <TableCell align="center">{row.email}</TableCell>
-                  <TableCell align="center">{row.covid_status}</TableCell>
+                  <TableCell align="center">{row.userFirstName}</TableCell>
+                  <TableCell align="center">{row.userMiddleName}</TableCell>
+                  <TableCell align="center">{row.userLastName}</TableCell>
+                  <TableCell align="center">{row.userEmail}</TableCell>
+                  <TableCell align="center">{row.userStatus}</TableCell>
                   <TableCell align="center">
                     {convertTime(row.created_at)}
                   </TableCell>
