@@ -15,7 +15,7 @@ const MyRequests = () => {
   const columns = [
     { id: 1, label: "Request Type" },
     { id: 2, label: "Request Name" },
-    { id: 3, label: "Date" },
+    { id: 3, label: "Date Requested" },
     { id: 4, label: "Status" },
   ];
 
