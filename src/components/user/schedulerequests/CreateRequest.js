@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import Button from "@mui/material/Button";
+import CurrentUser from "../../auth/CurrentUser";
 import FormControl from "@mui/material/FormControl";
 import Grid from "@mui/material/Grid";
 import InputLabel from "@mui/material/InputLabel";
@@ -11,6 +12,9 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
 const CreateRequest = () => {
+  //setting context for current user
+  const { currentUser, headers } = useContext(CurrentUser);
+
   //setting state for value of select inputs
   const [requestType, setRequestType] = useState("");
   const [requestFor, setRequestFor] = useState("");
@@ -50,9 +54,15 @@ const CreateRequest = () => {
       method: "POST",
       url: "http://localhost:3001/api/v1/request",
       data: {
-        user_id: 3,
+        user_id: currentUser.id,
         request_type: requestType,
         name: requestFor,
+      },
+      headers: {
+        "access-token": headers.token,
+        client: headers.client,
+        expiry: headers.expiry,
+        uid: headers.uid,
       },
     })
       .then((res) => {
