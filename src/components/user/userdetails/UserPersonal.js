@@ -30,6 +30,8 @@ const UserPersonal = () => {
   const [address, setAddress] = useState(
     currentUser.address === "" ? "" : currentUser.address
   );
+  //setting state for uploading of vaccination card
+  const [uploadFile, setUploadFile] = useState();
 
   //handling changes on each fields
   const handleFirstName = (e) => {
@@ -51,7 +53,7 @@ const UserPersonal = () => {
       : setButtonDisable(false);
   };
   const handleBirthday = (e) => {
-    setFirstName(e.target.value);
+    setBirthday(e.target.value);
     e.target.value === currentUser.birthday
       ? setButtonDisable(true)
       : setButtonDisable(false);
@@ -67,6 +69,24 @@ const UserPersonal = () => {
     e.target.value === currentUser.address
       ? setButtonDisable(true)
       : setButtonDisable(false);
+  };
+
+  //handling change on file textfield
+  const handleFileChange = (e) => {
+    e.persist();
+    setUploadFile(e.target.files[0]);
+    setButtonDisable(false);
+  };
+
+  //handling uploading file to cloudinary
+  const handleSubmitFile = () => {
+    const form = new FormData();
+    form.append("image", uploadFile);
+    form.append("upload_preset", "health-app");
+    axios
+      .post(`http://localhost:3001/api/v1/upload/${currentUser.id}`, form)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err.message));
   };
 
   //handling updates on personal details
@@ -93,6 +113,7 @@ const UserPersonal = () => {
         setButtonDisable(true);
       })
       .catch((err) => console.log(err));
+    handleSubmitFile();
   };
 
   return (
@@ -216,11 +237,13 @@ const UserPersonal = () => {
               />
             </Grid>
             <Grid item xs={5} md={5} lg={5}>
-              <TextField
-                sx={{ width: "100%" }}
-                label="Last name"
-                defaultValue="Upload file here"
-              />
+              <FormControl fullWidth>
+                <TextField
+                  type="file"
+                  sx={{ width: "100%" }}
+                  onChange={handleFileChange}
+                />
+              </FormControl>
             </Grid>
           </Grid>
           <Grid
@@ -242,7 +265,7 @@ const UserPersonal = () => {
                   backgroundColor: "#3376b5",
                 }}
                 disabled={buttonDisable}
-                onClick={handleUpdateDetails}
+                onClick={handleSubmitFile}
               >
                 Update details
               </Button>
