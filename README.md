@@ -8,36 +8,36 @@ This project aims to tackle the current pandemic situation through tracking indi
 
 ## Key features
 
-### `Login`
+### Login
 
 Existing users may log in to their registered accounts either on their desktop computers or mobile phones via web browser.\
 Admins can logged onto their accounts to address requests and track various issues raised by the user.
 
-### `Logout`
+### Logout
 
 Users who have finished their session with the website may safely log out.\
 This will direct them to the root path while ensuring that their session is destroyed and any information during the active session will no longer be accessed.
 
-### `Registration`
+### Registration
 
 Users who does not have an existing account may register at the website via the signup form.
 
 ## Admin Key features
 
-### `Home dashboard`
+### Home dashboard
 
 Admin users have access to information about the current Covid cases in the country (PH) which is explicity shown as items, and cases tracking through a graph.\
 Admin users have access to the details of all users registered on the website.\
 Information of users are shown especially their current covid status for faster tracking and immediate action.\
 
-### `Requests`
+### Requests
 
 Admin users have access to all the requests made by all users.\
 Each requests type are explicitly defined for an easier processing.\
 Requests shows its requested date to keep track of any delayed actions from admin side.\
 Status of each requests are displayed to easily track which items are still pending.
 
-## `Reports`
+## Reports
 
 Admin users have access to reports: Establishment Reports and Cases Reports.\
 Establishment reports displays a list of users who have been on a specific establishment. Admin may choose from the option provided as to which establishment report he wants to see.\
