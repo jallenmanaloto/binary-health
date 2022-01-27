@@ -164,7 +164,7 @@ const MyQRCode = () => {
           lg={12}
         >
           {qrCode ? (
-            <QRCode className="qr-code" size="250" value={qrCode} />
+            <QRCode className="qr-code" size="150" value={qrCode} />
           ) : null}
         </Grid>
       </Grid>
