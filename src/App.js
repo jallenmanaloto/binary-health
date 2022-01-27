@@ -18,9 +18,10 @@ function App() {
     last_name: "",
     covid_status: "",
     role: "",
+    gender: "",
+    address: "",
+    birthday: "",
   });
-
-  console.log(currentUser.id);
 
   //setting context for auth headers
   const [headers, setHeaders] = useState({
