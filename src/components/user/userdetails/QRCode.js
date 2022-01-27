@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import QRCode from "qrcode.react";
+import jsPDF from "jspdf";
 
 const MyQRCode = () => {
   //setting context to get user id
@@ -15,6 +16,22 @@ const MyQRCode = () => {
   const [qrCode, setQrCode] = useState("");
 
   //getting url from database
+  const handleDownload = () => {
+    const qrCodeCanvas = document.querySelector(".qr-code");
+    const qrCodeData = qrCodeCanvas.toDataURL("image/png");
+
+    const doc = new jsPDF("p", "pt", "A4");
+    doc.setFontSize(18);
+    doc.text(
+      `${currentUser.first_name} ${currentUser.last_name}`,
+      300,
+      250,
+      "center"
+    );
+    doc.addImage(qrCodeData, "JPEG", 230, 300, 150, 150);
+    doc.save("QRCode" + ".pdf");
+  };
+
   useEffect(() => {
     axios({
       method: "GET",
@@ -107,16 +124,7 @@ const MyQRCode = () => {
             <strong>Download</strong> button below.
           </Typography>
         </Grid>
-        <Grid
-          sx={{ display: "flex", justifyContent: "center", mt: 8 }}
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={12}
-        >
-          <QRCode size="250" value={qrCode} />
-        </Grid>
+
         <Grid
           sx={{ display: "flex", mt: 10, justifyContent: "center" }}
           item
@@ -126,11 +134,38 @@ const MyQRCode = () => {
           lg={12}
         >
           <Button
-            sx={{ backgroundColor: "#3376b5", mb: { xs: 10, sm: 10, md: 10 } }}
+            sx={{
+              backgroundColor: "#3376b5",
+              mb: { xs: 3, sm: 10, md: 10 },
+              mr: 5,
+            }}
             variant="contained"
+          >
+            Get QR Code
+          </Button>
+          <Button
+            sx={{ backgroundColor: "#3376b5", mb: { xs: 3, sm: 10, md: 10 } }}
+            variant="contained"
+            onClick={handleDownload}
           >
             Download
           </Button>
+        </Grid>
+        <Grid
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            mb: { xs: 5, sm: 10, md: 10 },
+          }}
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={12}
+        >
+          {qrCode ? (
+            <QRCode className="qr-code" size="250" value={qrCode} />
+          ) : null}
         </Grid>
       </Grid>
     </Paper>
