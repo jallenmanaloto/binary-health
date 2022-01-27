@@ -27,7 +27,7 @@ const UserPersonal = () => {
   const [gender, setGender] = useState(
     currentUser.gender === "" ? "" : currentUser.gender
   );
-  console.log(currentUser.gender);
+
   const [address, setAddress] = useState(
     currentUser.address === "" ? "" : currentUser.address
   );
@@ -122,7 +122,6 @@ const UserPersonal = () => {
       .catch((err) => console.log(err));
     // handleSubmitFile();
   };
-  console.log(currentUser.address);
 
   return (
     <Paper sx={{ height: "90vh", mt: { xs: 0, sm: -1, md: -1, lg: 0 } }}>
