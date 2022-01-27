@@ -1,49 +1,50 @@
-# Getting Started with Create React App
+# App Name Pending
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was designed and layout with [Material UI](https://mui.com/).
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+This project aims to tackle the current pandemic situation through tracking individuals entering different establishments. As the world shifts to a more digitalized approach in dealing with various health concern, it is also addressed here different ways to create appointments and requests that may help users in achieving their healthcare needs and different health requirements by various organizations.
 
-### `npm start`
+## Key features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `Login`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Existing users may log in to their registered accounts either on their desktop computers or mobile phones via web browser.\
+Admins can logged onto their accounts to address requests and track various issues raised by the user.
 
-### `npm test`
+### `Logout`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Users who have finished their session with the website may safely log out.\
+This will direct them to the root path while ensuring that their session is destroyed and any information during the active session will no longer be accessed.
 
-### `npm run build`
+### `Registration`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Users who does not have an existing account may register at the website via the signup form.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Admin Key features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `Home dashboard`
 
-### `npm run eject`
+Admin users have access to information about the current Covid cases in the country (PH) which is explicity shown as items, and cases tracking through a graph.\
+Admin users have access to the details of all users registered on the website.\
+Information of users are shown especially their current covid status for faster tracking and immediate action.\
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `Requests`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Admin users have access to all the requests made by all users.\
+Each requests type are explicitly defined for an easier processing.\
+Requests shows its requested date to keep track of any delayed actions from admin side.\
+Status of each requests are displayed to easily track which items are still pending.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## `Reports`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Admin users have access to reports: Establishment Reports and Cases Reports.\
+Establishment reports displays a list of users who have been on a specific establishment. Admin may choose from the option provided as to which establishment report he wants to see.\
+The report shows details of the user from his name, email, to the date he/she visited the establishment.\
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Cases reports displays a list of all users who have been tagged as positive case.\
+This list will help Admins to easily track these individual and take necessary actions.
 
 ### Code Splitting
 
