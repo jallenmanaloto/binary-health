@@ -37,7 +37,7 @@ const Establishments = () => {
     setId(evt.target.value);
     axios({
       method: "GET",
-      url: `http://localhost:3001/api/v1/get_users/${evt.target.value}`,
+      url: `http://localhost:3001/api/v1/users/${evt.target.value}/activities`,
       headers: {
         "access-token": headers.token,
         client: headers.client,
@@ -47,6 +47,7 @@ const Establishments = () => {
     })
       .then((res) => {
         setVisitors(res.data.users);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -91,7 +92,7 @@ const Establishments = () => {
                   onChange={handleChange}
                   value={id}
                 >
-                  <MenuItem value={1}>SM Bacoor</MenuItem>
+                  <MenuItem value="SM Bacoor">SM Bacoor</MenuItem>
                 </Select>
               </FormControl>
             </div>
