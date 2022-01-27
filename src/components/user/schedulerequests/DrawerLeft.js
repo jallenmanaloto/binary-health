@@ -91,6 +91,7 @@ const DrawerLeft = () => {
           alignItems: "center",
           height: "90vh",
         }}
+        elevation={0}
       >
         <Typography
           sx={{
