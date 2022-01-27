@@ -7,7 +7,7 @@ import RequestsTable from "../tables/RequestsTable";
 
 const Requests = () => {
   // defining values of headers from context
-  const { headers } = useContext(CurrentUser);
+  const { currentUser, headers } = useContext(CurrentUser);
   // setting state for table row
   const [userRequest, setUserRequest] = useState([]);
 
@@ -23,7 +23,7 @@ const Requests = () => {
   useEffect(() => {
     axios({
       method: "GET",
-      url: "http://localhost:3001/api/v1/users/user_requests/3",
+      url: `http://localhost:3001/api/v1/users/user_requests/${currentUser.id}`,
       headers: {
         "access-token": headers.token,
         client: headers.client,
