@@ -104,6 +104,9 @@ const UserLogin = () => {
           last_name: res.data.data.last_name,
           covid_status: res.data.data.covid_status,
           role: res.data.data.role,
+          gender: res.data.data.gender,
+          address: res.data.data.address,
+          birthday: res.data.data.birthday,
         };
 
         setCurrentUser({
@@ -114,6 +117,9 @@ const UserLogin = () => {
           last_name: res.data.data.last_name,
           covid_status: res.data.data.covid_status,
           role: res.data.data.role,
+          gender: res.data.data.gender,
+          address: res.data.data.address,
+          birthday: res.data.data.birthday,
         });
 
         localStorage.setItem("userDetails", JSON.stringify(userDetails));
