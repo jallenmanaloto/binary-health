@@ -97,6 +97,7 @@ const UserLogin = () => {
     })
       .then((res) => {
         const userDetails = {
+          id: res.data.data.id,
           email: res.data.data.email,
           first_name: res.data.data.first_name,
           middle_name: res.data.data.middle_name,
@@ -104,7 +105,9 @@ const UserLogin = () => {
           covid_status: res.data.data.covid_status,
           role: res.data.data.role,
         };
+
         setCurrentUser({
+          id: res.data.data.id,
           email: res.data.data.email,
           first_name: res.data.data.first_name,
           middle_name: res.data.data.middle_name,
