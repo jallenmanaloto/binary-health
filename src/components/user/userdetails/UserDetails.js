@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import Activities from "./Activities";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import UserDetailsNav from "../context/UserDetailsNav";
@@ -8,8 +9,7 @@ import QRCode from "./QRCode";
 
 const UserDetails = () => {
   //setting context for navigation
-  const { activities, setActivities, personal, setPersonal, qr, setQr } =
-    useContext(UserDetailsNav);
+  const { activities, personal, qr } = useContext(UserDetailsNav);
 
   return (
     <Container
@@ -30,7 +30,7 @@ const UserDetails = () => {
         <Grid item xs={12} lg={9}>
           {personal ? <UserPersonal /> : null}
           {qr ? <QRCode /> : null}
-          {/* {personal ? <UserPersonal /> : null} */}
+          {activities ? <Activities /> : null}
         </Grid>
       </Grid>
     </Container>
