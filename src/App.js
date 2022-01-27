@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
-import { Navigate, Routes, Route } from "react-router-dom";
-import Admin from "./components/admin/Admin";
+import { Routes, Route } from "react-router-dom";
 import CurrentUser from "./components/auth/CurrentUser";
 import Dashboard from "./components/dashboard/Dashboard";
 import Registration from "./components/registration/Registration";
-import User from "./components/user/User";
 import UserLogin from "./components/login/UserLogin";
 import "./App.css";
 
@@ -36,15 +34,15 @@ function App() {
     token: "",
   });
 
-  useEffect(() => {
-    localStorage.getItem("userAuth")
-      ? setHeaders(JSON.parse(localStorage.getItem("userAuth")))
-      : setHeaders(JSON.parse(sessionStorage.getItem("userAuth")));
+  // useEffect(() => {
+  //   localStorage.getItem("userAuth")
+  //     ? setHeaders(JSON.parse(localStorage.getItem("userAuth")))
+  //     : setHeaders(JSON.parse(sessionStorage.getItem("userAuth")));
 
-    localStorage.getItem("userDetails")
-      ? setCurrentUser(JSON.parse(localStorage.getItem("userDetails")))
-      : setCurrentUser(JSON.parse(sessionStorage.getItem("userDetails")));
-  }, []);
+  //   localStorage.getItem("userDetails")
+  //     ? setCurrentUser(JSON.parse(localStorage.getItem("userDetails")))
+  //     : setCurrentUser(JSON.parse(sessionStorage.getItem("userDetails")));
+  // }, []);
 
   return (
     <div className="App">
@@ -67,8 +65,8 @@ function App() {
           )}
           <Route path="register" element={<Registration />} />
           <Route path="login" element={<UserLogin />} />
+          <Route path="user" element={<Dashboard />} />
         </Routes>
-        {/* <User /> */}
       </CurrentUser.Provider>
     </div>
   );
