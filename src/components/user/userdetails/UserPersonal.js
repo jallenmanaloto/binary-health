@@ -25,8 +25,9 @@ const UserPersonal = () => {
     currentUser.birthday !== "" ? "2020-01-01" : currentUser.birthday
   );
   const [gender, setGender] = useState(
-    currentUser.gender === "" ? "Gender" : currentUser.gender
+    currentUser.gender === "" ? "" : currentUser.gender
   );
+  console.log(currentUser.gender);
   const [address, setAddress] = useState(
     currentUser.address === "" ? "" : currentUser.address
   );
@@ -80,41 +81,48 @@ const UserPersonal = () => {
 
   //handling uploading file to cloudinary
   const handleSubmitFile = () => {
-    const form = new FormData();
-    form.append("image", uploadFile);
-    form.append("upload_preset", "health-app");
-    axios
-      .post(`http://localhost:3001/api/v1/upload/${currentUser.id}`, form)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err.message));
+    if (uploadFile == null) {
+      return;
+    } else {
+      const form = new FormData();
+      form.append("image", uploadFile);
+      form.append("upload_preset", "health-app");
+      axios
+        .post(`http://localhost:3001/api/v1/upload/${currentUser.id}`, form)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err.message));
+    }
   };
 
   //handling updates on personal details
   const handleUpdateDetails = () => {
-    const data = {
+    const axios = require("axios");
+    const qs = require("qs");
+    const data = qs.stringify({
       first_name: firstName,
       last_name: lastName,
       middle_name: middleName,
       birthday: birthday,
       gender: gender,
-    };
-    axios({
+      address: address,
+    });
+    const config = {
       method: "PATCH",
       url: `http://localhost:3001/api/v1/users/update_details/${currentUser.id}`,
-      data: data,
       headers: {
         "access-token": headers.token,
         client: headers.client,
         expiry: headers.expiry,
         uid: headers.uid,
       },
-    })
-      .then((res) => {
-        setButtonDisable(true);
-      })
+      data: data,
+    };
+    axios(config)
+      .then((res) => console.log(res))
       .catch((err) => console.log(err));
-    handleSubmitFile();
+    // handleSubmitFile();
   };
+  console.log(currentUser.address);
 
   return (
     <Paper sx={{ height: "90vh", mt: { xs: 0, sm: -1, md: -1, lg: 0 } }}>
@@ -181,7 +189,7 @@ const UserPersonal = () => {
               onChange={handleBirthday}
             />
           </Grid>
-          <Grid item xs={2} sx={2} md={2} lg={2}>
+          <Grid item xs={2} sm={2} md={2} lg={2}>
             <FormControl fullWidth>
               <InputLabel>Gender</InputLabel>
               <Select
@@ -265,7 +273,7 @@ const UserPersonal = () => {
                   backgroundColor: "#3376b5",
                 }}
                 disabled={buttonDisable}
-                onClick={handleSubmitFile}
+                onClick={handleUpdateDetails}
               >
                 Update details
               </Button>
