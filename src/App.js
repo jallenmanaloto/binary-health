@@ -11,6 +11,7 @@ import "./App.css";
 function App() {
   //setting context for user's details
   const [currentUser, setCurrentUser] = useState({
+    id: "",
     email: "",
     first_name: "",
     middle_name: "",
@@ -18,6 +19,8 @@ function App() {
     covid_status: "",
     role: "",
   });
+
+  console.log(currentUser.id);
 
   //setting context for auth headers
   const [headers, setHeaders] = useState({
