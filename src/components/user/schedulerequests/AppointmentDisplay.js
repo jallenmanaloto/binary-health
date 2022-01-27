@@ -40,7 +40,7 @@ const AppointmentDisplay = () => {
               {item.aname}
             </Typography>
             <Typography sx={{ p: 2, color: "#4d4d4d" }} variant="body1">
-              8:00am
+              {item.atime}
             </Typography>
           </div>
           <Divider />
