@@ -28,6 +28,7 @@ const User = () => {
   const [personal, setPersonal] = useState(true);
   const [qr, setQr] = useState(false);
   const [activities, setActivities] = useState(false);
+  const [userNavActive, setUserNavActive] = useState(false);
 
   return (
     <AppbarNavigation.Provider
@@ -64,6 +65,8 @@ const User = () => {
             setPersonal,
             qr,
             setQr,
+            userNavActive,
+            setUserNavActive,
           }}
         >
           <div className={classes.root}>
