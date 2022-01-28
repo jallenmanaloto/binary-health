@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/binary/static/css/main.464980f5.css",
-    "main.js": "/binary/static/js/main.5b7646fd.js",
-    "static/js/498.7cb2972b.chunk.js": "/binary/static/js/498.7cb2972b.chunk.js",
-    "static/js/703.0e984a6e.chunk.js": "/binary/static/js/703.0e984a6e.chunk.js",
-    "static/js/610.dd362a74.chunk.js": "/binary/static/js/610.dd362a74.chunk.js",
-    "static/js/787.1369f097.chunk.js": "/binary/static/js/787.1369f097.chunk.js",
+    "main.js": "/binary/static/js/main.8ffba65e.js",
+    "static/js/498.181c4473.chunk.js": "/binary/static/js/498.181c4473.chunk.js",
+    "static/js/703.14c5a54d.chunk.js": "/binary/static/js/703.14c5a54d.chunk.js",
+    "static/js/610.fad1e751.chunk.js": "/binary/static/js/610.fad1e751.chunk.js",
+    "static/js/787.24a4b4af.chunk.js": "/binary/static/js/787.24a4b4af.chunk.js",
     "static/media/HeroFirst.svg": "/binary/static/media/HeroFirst.8bd4f842b4fdcd41dfa8111a753dc7a9.svg",
     "static/media/NotFoundImage.svg": "/binary/static/media/NotFoundImage.b151f6985366a2663fd38b31e43b9e43.svg",
     "static/media/Team.svg": "/binary/static/media/Team.a85a6534a7aa0133640885ef1e5e8051.svg",
@@ -14,14 +14,14 @@
     "static/media/binary.svg": "/binary/static/media/binary.9257a8dabaa4925e1cef08b4e0287368.svg",
     "index.html": "/binary/index.html",
     "main.464980f5.css.map": "/binary/static/css/main.464980f5.css.map",
-    "main.5b7646fd.js.map": "/binary/static/js/main.5b7646fd.js.map",
-    "498.7cb2972b.chunk.js.map": "/binary/static/js/498.7cb2972b.chunk.js.map",
-    "703.0e984a6e.chunk.js.map": "/binary/static/js/703.0e984a6e.chunk.js.map",
-    "610.dd362a74.chunk.js.map": "/binary/static/js/610.dd362a74.chunk.js.map",
-    "787.1369f097.chunk.js.map": "/binary/static/js/787.1369f097.chunk.js.map"
+    "main.8ffba65e.js.map": "/binary/static/js/main.8ffba65e.js.map",
+    "498.181c4473.chunk.js.map": "/binary/static/js/498.181c4473.chunk.js.map",
+    "703.14c5a54d.chunk.js.map": "/binary/static/js/703.14c5a54d.chunk.js.map",
+    "610.fad1e751.chunk.js.map": "/binary/static/js/610.fad1e751.chunk.js.map",
+    "787.24a4b4af.chunk.js.map": "/binary/static/js/787.24a4b4af.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.464980f5.css",
-    "static/js/main.5b7646fd.js"
+    "static/js/main.8ffba65e.js"
   ]
 }
