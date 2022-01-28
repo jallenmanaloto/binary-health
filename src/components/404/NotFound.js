@@ -10,7 +10,7 @@ const NotFound = () => {
     <div className={classes.root}>
       <img className={classes.image} src={NotFoundImage} alt="NotFound" />
       <Link
-        href="login"
+        href="/"
         sx={{
           position: "absolute",
           bottom: 100,
