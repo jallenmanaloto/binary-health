@@ -1,4 +1,7 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import CurrentUser from "../../auth/CurrentUser";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -24,6 +27,12 @@ const DetailsNavDrawer = () => {
     setUserNavActive,
   } = useContext(UserDetailsNav);
 
+  //setting context for currentUser logged in
+  const { currentUser, headers } = useContext(CurrentUser);
+
+  //declaring navigation for logout
+  let navigate = useNavigate();
+
   //handling navigations
   const handlePersonal = () => {
     setPersonal(true);
@@ -45,6 +54,28 @@ const DetailsNavDrawer = () => {
   const handleDrawerClose = () => {
     setUserNavActive(false);
   };
+
+  //handling logout
+  const handleLogout = () => {
+    axios({
+      method: "DELETE",
+      url: "https://health-users-api.herokuapp.com/auth/sign_out",
+      headers: {
+        "access-token": headers.token,
+        client: headers.client,
+        expiry: headers.expiry,
+        uid: headers.uid,
+      },
+    })
+      .then(navigate("/login"))
+      .catch((err) => {
+        console.log(err);
+      });
+    localStorage.removeItem("userDetails");
+    localStorage.removeItem("userAuth");
+    localStorage.removeItem("amadeusToken");
+  };
+
   return (
     <Drawer
       sx={{ width: "50%" }}
@@ -160,9 +191,10 @@ const DetailsNavDrawer = () => {
             )}
           </ListItemButton>
         </List>
-        <List sx={{ position: "absolute", bottom: 40, left: 0, width: "100%" }}>
+        <List sx={{ position: "absolute", bottom: 0, left: 0, width: "100%" }}>
           <ListItemButton
             sx={{ width: "100%", display: "flex", justifyContent: "start" }}
+            onClick={handleLogout}
           >
             <ListItemIcon sx={{ ml: 2 }}>
               <LogoutIcon />
