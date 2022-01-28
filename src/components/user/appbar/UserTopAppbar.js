@@ -20,6 +20,7 @@ import TodayIcon from "@mui/icons-material/Today";
 import TodayOutlinedIcon from "@mui/icons-material/TodayOutlined";
 import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
+import binary from "../../../images/binary.svg";
 
 const UserTopAppbar = () => {
   //setting context
@@ -102,7 +103,7 @@ const UserTopAppbar = () => {
     <div>
       <AppBar
         sx={{
-          backgroundColor: "white",
+          backgroundColor: "#fcfcfc",
           borderBottom: "1px solid #e0e0e0",
           display: { xs: "none", sm: "block" },
           zIndex: "1",
@@ -110,6 +111,11 @@ const UserTopAppbar = () => {
         elevation={0}
       >
         <Toolbar sx={{ p: 1 }}>
+          <img
+            style={{ position: "absolute", top: -10 }}
+            src={binary}
+            alt="background-image"
+          />
           <Container maxWidth="md">
             <Grid container item justifyContent="space-evenly" spacing={0}>
               <Grid item md={3}>
