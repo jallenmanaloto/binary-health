@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/binary-health/static/css/main.464980f5.css",
+    "main.js": "/binary-health/static/js/main.89b7dcb3.js",
+    "static/js/498.7cb2972b.chunk.js": "/binary-health/static/js/498.7cb2972b.chunk.js",
+    "static/js/703.0e984a6e.chunk.js": "/binary-health/static/js/703.0e984a6e.chunk.js",
+    "static/js/610.dd362a74.chunk.js": "/binary-health/static/js/610.dd362a74.chunk.js",
+    "static/js/787.1369f097.chunk.js": "/binary-health/static/js/787.1369f097.chunk.js",
+    "static/media/NotFoundImage.svg": "/binary-health/static/media/NotFoundImage.b151f6985366a2663fd38b31e43b9e43.svg",
+    "static/media/Team.svg": "/binary-health/static/media/Team.a85a6534a7aa0133640885ef1e5e8051.svg",
+    "static/media/Thermometer.svg": "/binary-health/static/media/Thermometer.d826b8e2e129c2f16f16cea09275e8da.svg",
+    "static/media/binary.svg": "/binary-health/static/media/binary.9257a8dabaa4925e1cef08b4e0287368.svg",
+    "index.html": "/binary-health/index.html",
+    "main.464980f5.css.map": "/binary-health/static/css/main.464980f5.css.map",
+    "main.89b7dcb3.js.map": "/binary-health/static/js/main.89b7dcb3.js.map",
+    "498.7cb2972b.chunk.js.map": "/binary-health/static/js/498.7cb2972b.chunk.js.map",
+    "703.0e984a6e.chunk.js.map": "/binary-health/static/js/703.0e984a6e.chunk.js.map",
+    "610.dd362a74.chunk.js.map": "/binary-health/static/js/610.dd362a74.chunk.js.map",
+    "787.1369f097.chunk.js.map": "/binary-health/static/js/787.1369f097.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.464980f5.css",
+    "static/js/main.89b7dcb3.js"
+  ]
+}
