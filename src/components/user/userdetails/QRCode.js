@@ -15,27 +15,35 @@ const MyQRCode = () => {
   //setting state for the url of qrcode
   const [qrCode, setQrCode] = useState("");
 
+  //setting state to disable button
+  const disabled = "true";
+  const notDisabled = "false";
+
   //getting url from database
   const handleDownload = () => {
-    const qrCodeCanvas = document.querySelector(".qr-code");
-    const qrCodeData = qrCodeCanvas.toDataURL("image/png");
+    if (qrCode === "") {
+      console.log("empty");
+    } else {
+      const qrCodeCanvas = document.querySelector(".qr-code");
+      const qrCodeData = qrCodeCanvas.toDataURL("image/png");
 
-    const doc = new jsPDF("p", "pt", "A4");
-    doc.setFontSize(18);
-    doc.text(
-      `${currentUser.first_name} ${currentUser.last_name}`,
-      300,
-      250,
-      "center"
-    );
-    doc.addImage(qrCodeData, "JPEG", 230, 300, 150, 150);
-    doc.save("QRCode" + ".pdf");
+      const doc = new jsPDF("p", "pt", "A4");
+      doc.setFontSize(18);
+      doc.text(
+        `${currentUser.first_name} ${currentUser.last_name}`,
+        300,
+        250,
+        "center"
+      );
+      doc.addImage(qrCodeData, "JPEG", 230, 300, 150, 150);
+      doc.save("QRCode" + ".pdf");
+    }
   };
 
   useEffect(() => {
     axios({
       method: "GET",
-      url: `http://localhost:3001/api/v1/item/${currentUser.id}`,
+      url: `https://health-users-api.herokuapp.com//api/v1/item/${currentUser.id}`,
       headers: {
         "access-token": headers.token,
         client: headers.client,
@@ -120,8 +128,8 @@ const MyQRCode = () => {
             4. Click on <strong>QR Code</strong> option to see your QR Code.
           </Typography>
           <Typography sx={{ textAlign: "start", ml: 8, mr: 5 }} variant="body1">
-            5. Download your generated QR Code by clicking on{" "}
-            <strong>Download</strong> button below.
+            5. Take a screenshot or download your generated QR Code by clicking
+            on <strong>Download</strong> button below.
           </Typography>
         </Grid>
 
@@ -133,7 +141,7 @@ const MyQRCode = () => {
           md={12}
           lg={12}
         >
-          <Button
+          {/* <Button
             sx={{
               backgroundColor: "#3376b5",
               mb: { xs: 3, sm: 10, md: 10 },
@@ -142,7 +150,8 @@ const MyQRCode = () => {
             variant="contained"
           >
             Get QR Code
-          </Button>
+          </Button> */}
+
           <Button
             sx={{ backgroundColor: "#3376b5", mb: { xs: 3, sm: 10, md: 10 } }}
             variant="contained"
