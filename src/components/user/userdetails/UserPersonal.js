@@ -10,6 +10,9 @@ import Paper from "@mui/material/Paper";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import Snackbar from "@mui/material/Snackbar";
+import CloseIcon from "@mui/icons-material/Close";
 
 const UserPersonal = () => {
   //setting context for current user details
@@ -97,6 +100,42 @@ const UserPersonal = () => {
     }
   };
 
+  // defining snackbar
+  const [open, setOpen] = useState(false);
+  const [snackMessage, setSnackMessage] = useState("");
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const action = (
+    <>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </>
+  );
+
+  const snack = (
+    <div>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        action={action}
+        message={snackMessage}
+      />
+    </div>
+  );
+
   //handling updates on personal details
   const handleUpdateDetails = () => {
     const axios = require("axios");
@@ -121,7 +160,11 @@ const UserPersonal = () => {
       data: data,
     };
     axios(config)
-      .then((res) => handleSubmitFile())
+      .then((res) => {
+        handleSubmitFile();
+        setOpen(true);
+        setSnackMessage("Details updated");
+      })
       .catch((err) => console.log(err));
     // handleSubmitFile();
   };
@@ -283,6 +326,7 @@ const UserPersonal = () => {
           </Grid>
         </Grid>
       </Grid>
+      {snack}
     </Paper>
   );
 };
