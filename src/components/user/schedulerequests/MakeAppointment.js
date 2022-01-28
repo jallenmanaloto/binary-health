@@ -17,6 +17,9 @@ import MobileTimePicker from "@mui/lab/MobileTimePicker";
 import TimePicker from "@mui/lab/TimePicker";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import MobileDatePicker from "@mui/lab/MobileDatePicker";
+import IconButton from "@mui/material/IconButton";
+import Snackbar from "@mui/material/Snackbar";
+import CloseIcon from "@mui/icons-material/Close";
 
 const MakeAppointment = () => {
   //setting context for current user
@@ -52,6 +55,42 @@ const MakeAppointment = () => {
     return `${hours % 12 === 0 ? 12 : hours % 12}:${minutes} ${ampm}`;
   };
 
+  // defining snackbar
+  const [open, setOpen] = useState(false);
+  const [snackMessage, setSnackMessage] = useState("");
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const action = (
+    <>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </>
+  );
+
+  const snack = (
+    <div>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        action={action}
+        message={snackMessage}
+      />
+    </div>
+  );
+
   //handling making an appointment
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -71,8 +110,14 @@ const MakeAppointment = () => {
         uid: headers.uid,
       },
     })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        setOpen(true);
+        setSnackMessage("Appointment request submitted");
+      })
+      .catch((err) => {
+        setOpen(true);
+        setSnackMessage("Error occurred, try again later");
+      });
   };
 
   return (
@@ -273,6 +318,7 @@ const MakeAppointment = () => {
             </Grid>
           </Grid>
         </Grid>
+        {snack}
       </Paper>
     </LocalizationProvider>
   );
