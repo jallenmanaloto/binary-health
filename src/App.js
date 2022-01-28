@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import CurrentUser from "./components/auth/CurrentUser";
 import Dashboard from "./components/dashboard/Dashboard";
+import NotFound from "./components/404/NotFound";
 import Registration from "./components/registration/Registration";
 import UserLogin from "./components/login/UserLogin";
 import "./App.css";
@@ -66,6 +67,7 @@ function App() {
           <Route path="register" element={<Registration />} />
           <Route path="login" element={<UserLogin />} />
           <Route path="user" element={<Dashboard />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </CurrentUser.Provider>
     </div>
