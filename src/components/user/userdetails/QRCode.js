@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import ActionAlert from "../../alerts/ActionAlert";
 import Button from "@mui/material/Button";
 import CurrentUser from "../../auth/CurrentUser";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import Snackbar from "@mui/material/Snackbar";
+import CloseIcon from "@mui/icons-material/Close";
 import QRCode from "qrcode.react";
 import jsPDF from "jspdf";
 
@@ -15,14 +19,11 @@ const MyQRCode = () => {
   //setting state for the url of qrcode
   const [qrCode, setQrCode] = useState("");
 
-  //setting state to disable button
-  const disabled = "true";
-  const notDisabled = "false";
-
   //getting url from database
   const handleDownload = () => {
     if (qrCode === "") {
-      console.log("empty");
+      setOpen(true);
+      setSnackMessage("Upload your vaccination card");
     } else {
       const qrCodeCanvas = document.querySelector(".qr-code");
       const qrCodeData = qrCodeCanvas.toDataURL("image/png");
@@ -56,6 +57,42 @@ const MyQRCode = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  // defining snackbar
+  const [open, setOpen] = useState(false);
+  const [snackMessage, setSnackMessage] = useState("");
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const action = (
+    <>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </>
+  );
+
+  const snack = (
+    <div>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        action={action}
+        message={snackMessage}
+      />
+    </div>
+  );
   return (
     <Paper
       sx={{
@@ -141,17 +178,6 @@ const MyQRCode = () => {
           md={12}
           lg={12}
         >
-          {/* <Button
-            sx={{
-              backgroundColor: "#3376b5",
-              mb: { xs: 3, sm: 10, md: 10 },
-              mr: 5,
-            }}
-            variant="contained"
-          >
-            Get QR Code
-          </Button> */}
-
           <Button
             sx={{ backgroundColor: "#3376b5", mb: { xs: 3, sm: 10, md: 10 } }}
             variant="contained"
@@ -177,6 +203,7 @@ const MyQRCode = () => {
           ) : null}
         </Grid>
       </Grid>
+      {snack}
     </Paper>
   );
 };
