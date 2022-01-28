@@ -14,13 +14,15 @@ import Grid from "@mui/material/Grid";
 import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
 import Link from "@mui/material/Link";
-import MemberLogin from "../../images/MemberLogin.jpg";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import Thermometer from "../../images/Thermometer.svg";
+import binary from "../../images/binary.svg";
+import Team from "../../images/Team.svg";
 
 const UserLogin = () => {
   const form = formStyle();
@@ -174,16 +176,11 @@ const UserLogin = () => {
     <div>
       <Grid container>
         <Grid container item sm={12} md={12} lg={12} xl={12}>
-          <Typography
-            sx={{ position: "fixed", pt: 8, pl: 20, color: "#4d4d4d" }}
-            variant="h3"
-          >
-            Betelgeuse
-          </Typography>
-          <img className={imageStyle.root} src={MemberLogin} alt="background" />
+          <img className={imageStyle.root} src={Thermometer} alt="background" />
+          <img className={imageStyle.team} src={Team} alt="background" />
           <Paper
             className={form.formContainer}
-            sx={{ backgroundColor: "#fcfcfc" }}
+            sx={{ backgroundColor: "#ebebeb" }}
             elevation={0}
           >
             {error ? <Alerts /> : null}
@@ -197,12 +194,7 @@ const UserLogin = () => {
                 className={form.form}
                 elevation={4}
               >
-                <Typography
-                  sx={{ fontWeight: "bold", color: "#4d4d4d" }}
-                  variant="h4"
-                >
-                  BETELGEUSE
-                </Typography>
+                <img style={{ height: "150px" }} src={binary} alt="" />
                 <TextField
                   onChange={handleEmail}
                   onKeyDown={handleEnterKeyLogin}
