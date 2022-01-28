@@ -137,6 +137,40 @@ export const formStyle = makeStyles({
   },
 });
 
+export const landingStyle = makeStyles({
+  root: {
+    width: "100vw",
+  },
+  affiliation: {
+    display: "flex",
+    alignItems: "center",
+  },
+  brand: {
+    height: "6.2em",
+    marginBottom: "3em",
+  },
+  heroFirst: {
+    height: "70vh",
+    width: "50vw",
+  },
+  firstPage: {
+    height: "100vh",
+  },
+  navContainer: {
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "center",
+    width: "100%",
+    marginBottom: "2.6em",
+    marginTop: "0.28rem",
+  },
+  summaryContainer: {
+    width: "44vw",
+    display: "flex",
+    flexDirection: "column",
+  },
+});
+
 export const loginErrorAlert = makeStyles({
   root: {
     position: "absolute",
