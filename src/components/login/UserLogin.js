@@ -274,7 +274,7 @@ const UserLogin = () => {
                 <div className={form.optionsContainer}>
                   <Paper className={form.signupContainer} elevation={0}>
                     <Typography
-                      sx={{ paddingRight: "0.2rem", color: "#4d4d4d" }}
+                      sx={{ paddingRight: "0.2rem", mb: 10, color: "#4d4d4d" }}
                     >
                       Don't have an account yet?
                     </Typography>
