@@ -150,15 +150,26 @@ export const loginErrorAlert = makeStyles({
 export const loginImage = makeStyles({
   root: {
     height: "66vh",
+    width: "100vw",
     position: "absolute",
-    top: "9%",
-    left: "50%",
+    top: "-11%",
+    left: "30%",
     transform: "translateX(-50%)",
     borderRadius: "12%",
     zindex: 1,
-    opacity: 0.15,
+    opacity: 0.25,
   },
-  Title: {},
+  team: {
+    height: "66vh",
+    width: "100vw",
+    position: "absolute",
+    bottom: 0,
+    left: "70%",
+    transform: "translateX(-50%)",
+    borderRadius: "12%",
+    zindex: 1,
+    opacity: 0.25,
+  },
 });
 
 export const userStyle = makeStyles({
