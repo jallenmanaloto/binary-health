@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useMediaQuery } from "@mui/material";
 import Button from "@mui/material/Button";
+import CurrentUser from "../../auth/CurrentUser";
 import Grid from "@mui/material/Grid";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -18,6 +19,9 @@ import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import MobileDatePicker from "@mui/lab/MobileDatePicker";
 
 const MakeAppointment = () => {
+  //setting context for current user
+  const { currentUser, headers } = useContext(CurrentUser);
+
   //setting value for appointment type
   const [appointmentType, setAppointmentType] = useState("");
   const [error, setError] = useState(false);
@@ -53,12 +57,18 @@ const MakeAppointment = () => {
     event.preventDefault();
     axios({
       method: "POST",
-      url: "http://localhost:3001/api/v1/appointment/make_appointment/3",
+      url: `https://health-users-api.herokuapp.com/api/v1/appointment/make_appointment/${currentUser.id}`,
       data: {
         aname: appointmentType,
         atype: appointmentType,
         adate: String(appointmentDate),
         atime: convertTime(appointmentDate),
+      },
+      headers: {
+        "access-token": headers.token,
+        client: headers.client,
+        expiry: headers.expiry,
+        uid: headers.uid,
       },
     })
       .then((res) => console.log(res))

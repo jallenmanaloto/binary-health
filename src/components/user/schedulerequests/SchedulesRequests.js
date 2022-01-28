@@ -15,11 +15,6 @@ import ScheduleRequestsNavigation from "./ScheduleRequestsNavigation";
 
 const SchedulesRequests = () => {
   const theme = useTheme();
-  //setting state for upstream value of navigations
-  // const [myAppointmentsActive, setMyAppointmentsActive] = useState(true);
-  // const [makeAppointmentsActive, setMakeAppointmentsActive] = useState(false);
-  // const [myRequestsActive, setMyRequestsActive] = useState(false);
-  // const [makeRequestsActive, setMakeRequestsActive] = useState(false);
 
   const {
     myAppointmentsActive,

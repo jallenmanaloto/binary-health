@@ -49,7 +49,7 @@ const Tables = ({ columns, rows }) => {
                 return newDate.toLocaleDateString("en-US", options);
               };
               return (
-                <TableRow hover key={key}>
+                <TableRow hover="true" key={key}>
                   <TableCell align="center">{row.request_type}</TableCell>
                   <TableCell align="center">{row.name}</TableCell>
                   <TableCell align="center">{row.requested_by}</TableCell>

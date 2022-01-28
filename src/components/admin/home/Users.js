@@ -18,7 +18,7 @@ const Users = () => {
   useEffect(() => {
     axios({
       method: "GET",
-      url: "http://localhost:3001/api/v1/users",
+      url: "https://health-users-api.herokuapp.com/api/v1/users",
       headers: {
         "access-token": headers.token,
         client: headers.client,

@@ -52,7 +52,7 @@ const CreateRequest = () => {
     e.preventDefault();
     axios({
       method: "POST",
-      url: "http://localhost:3001/api/v1/request",
+      url: "https://health-users-api.herokuapp.com/api/v1/request",
       data: {
         user_id: currentUser.id,
         request_type: requestType,

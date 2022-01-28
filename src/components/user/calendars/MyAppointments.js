@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
+import CurrentUser from "../../auth/CurrentUser";
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
@@ -11,6 +12,9 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import StaticDatePicker from "@mui/lab/StaticDatePicker";
 
 const MyAppointments = () => {
+  //setting context for current user loggedin
+  const { currentUser, headers } = useContext(CurrentUser);
+
   //setting state for date in calendar
   const [date, setDate] = useState(new Date());
 
@@ -50,7 +54,13 @@ const MyAppointments = () => {
   useEffect(() => {
     axios({
       method: "GET",
-      url: "http://localhost:3001/api/v1/appointment/index/3",
+      url: `https://health-users-api.herokuapp.com/api/v1/appointment/index/${currentUser.id}`,
+      headers: {
+        "access-token": headers.token,
+        client: headers.client,
+        expiry: headers.expiry,
+        uid: headers.uid,
+      },
     })
       .then((res) => {
         setAppointments(res.data.appointments);

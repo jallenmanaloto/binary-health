@@ -88,7 +88,10 @@ const UserPersonal = () => {
       form.append("image", uploadFile);
       form.append("upload_preset", "health-app");
       axios
-        .post(`http://localhost:3001/api/v1/upload/${currentUser.id}`, form)
+        .post(
+          `https://health-users-api.herokuapp.com/api/v1/upload/${currentUser.id}`,
+          form
+        )
         .then((res) => console.log(res))
         .catch((err) => console.log(err.message));
     }
@@ -118,7 +121,7 @@ const UserPersonal = () => {
       data: data,
     };
     axios(config)
-      .then((res) => console.log(res))
+      .then((res) => handleSubmitFile())
       .catch((err) => console.log(err));
     // handleSubmitFile();
   };

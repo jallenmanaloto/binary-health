@@ -39,7 +39,7 @@ const Appbar = () => {
   const handleLogout = () => {
     axios({
       method: "DELETE",
-      url: "http://localhost:3001/auth/sign_out",
+      url: "https://health-users-api.herokuapp.com/auth/sign_out",
       headers: {
         "access-token": headers.token,
         client: headers.client,

@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import CurrentUser from "../../auth/CurrentUser";
-import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import RequestsTable from "../tables/RequestsTable";
 
 const MyRequests = () => {
   // defining values of headers from context
-  const { headers } = useContext(CurrentUser);
+  const { currentUser, headers } = useContext(CurrentUser);
   // setting state for table row
   const [userRequest, setUserRequest] = useState([]);
 
@@ -23,7 +22,7 @@ const MyRequests = () => {
   useEffect(() => {
     axios({
       method: "GET",
-      url: "http://localhost:3001/api/v1/users/user_requests/3",
+      url: `https://health-users-api.herokuapp.com/api/v1/users/user_requests/${currentUser.id}`,
       headers: {
         "access-token": headers.token,
         client: headers.client,

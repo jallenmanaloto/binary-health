@@ -37,7 +37,7 @@ const Establishments = () => {
     setId(evt.target.value);
     axios({
       method: "GET",
-      url: `http://localhost:3001/api/v1/users/${evt.target.value}/activities`,
+      url: `https://health-users-api.herokuapp.com/api/v1/users/${evt.target.value}/activities`,
       headers: {
         "access-token": headers.token,
         client: headers.client,
