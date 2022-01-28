@@ -10,6 +10,9 @@ import Paper from "@mui/material/Paper";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import Snackbar from "@mui/material/Snackbar";
+import CloseIcon from "@mui/icons-material/Close";
 
 const CreateRequest = () => {
   //setting context for current user
@@ -47,6 +50,42 @@ const CreateRequest = () => {
     setRequestFor(e.target.value);
   };
 
+  // defining snackbar
+  const [open, setOpen] = useState(false);
+  const [snackMessage, setSnackMessage] = useState("");
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const action = (
+    <>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </>
+  );
+
+  const snack = (
+    <div>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        action={action}
+        message={snackMessage}
+      />
+    </div>
+  );
+
   //handling submit of request
   const handleSubmitRequest = (e) => {
     e.preventDefault();
@@ -66,9 +105,13 @@ const CreateRequest = () => {
       },
     })
       .then((res) => {
-        console.log(res);
+        setOpen(true);
+        setSnackMessage("Request submitted");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setOpen(true);
+        setSnackMessage("An error occurred, try again later");
+      });
   };
 
   return (
