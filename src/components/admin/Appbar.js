@@ -51,7 +51,9 @@ const Appbar = () => {
       .catch((err) => {
         console.log(err);
       });
-    localStorage.removeItem("userHeaders");
+    localStorage.removeItem("userDetails");
+    localStorage.removeItem("userAuth");
+    localStorage.removeItem("amadeusToken");
   };
   return (
     <div>
