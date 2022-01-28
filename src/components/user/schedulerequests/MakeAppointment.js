@@ -113,6 +113,7 @@ const MakeAppointment = () => {
       .then((res) => {
         setOpen(true);
         setSnackMessage("Appointment request submitted");
+        setAppointmentType("");
       })
       .catch((err) => {
         setOpen(true);
