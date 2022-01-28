@@ -172,6 +172,22 @@ export const loginImage = makeStyles({
   },
 });
 
+export const NotFoundStyle = makeStyles({
+  root: {
+    height: "100vh",
+    width: "100vw",
+    overflow: "hidden",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  image: {
+    height: "85vh",
+    width: "85vw",
+    marginBottom: "10em",
+  },
+});
+
 export const userStyle = makeStyles({
   root: {
     width: "100vw",
