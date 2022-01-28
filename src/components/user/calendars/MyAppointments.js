@@ -28,6 +28,7 @@ const MyAppointments = () => {
       return (
         <>
           <div
+            key={item.id}
             style={{
               display: "flex",
               justifyContent: "space-between",
@@ -35,11 +36,7 @@ const MyAppointments = () => {
               width: "100%",
             }}
           >
-            <Typography
-              sx={{ p: 2, color: "#4d4d4d" }}
-              key={item.id}
-              variant="h6"
-            >
+            <Typography sx={{ p: 2, color: "#4d4d4d" }} variant="h6">
               {item.aname}
             </Typography>
             <Typography sx={{ p: 2, color: "#4d4d4d" }} variant="body1">
