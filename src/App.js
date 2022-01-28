@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import CurrentUser from "./components/auth/CurrentUser";
 import Dashboard from "./components/dashboard/Dashboard";
+import Landing from "./components/landing/Landing";
 import NotFound from "./components/404/NotFound";
 import Registration from "./components/registration/Registration";
 import UserLogin from "./components/login/UserLogin";
@@ -35,16 +36,6 @@ function App() {
     token: "",
   });
 
-  // useEffect(() => {
-  //   localStorage.getItem("userAuth")
-  //     ? setHeaders(JSON.parse(localStorage.getItem("userAuth")))
-  //     : setHeaders(JSON.parse(sessionStorage.getItem("userAuth")));
-
-  //   localStorage.getItem("userDetails")
-  //     ? setCurrentUser(JSON.parse(localStorage.getItem("userDetails")))
-  //     : setCurrentUser(JSON.parse(sessionStorage.getItem("userDetails")));
-  // }, []);
-
   return (
     <div className="App">
       <CurrentUser.Provider
@@ -58,6 +49,7 @@ function App() {
         }}
       >
         <Routes>
+          <Route path="/" element={<Landing />} />
           <Route path="user" element={<Dashboard />} />
           {headers.client !== "" ? (
             <Route path="user" element={<Dashboard />} />
