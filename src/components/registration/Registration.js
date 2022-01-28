@@ -7,10 +7,15 @@ import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
+import binary from "../../images/binary.svg";
+import Team from "../../images/Team.svg";
+import Thermometer from "../../images/Thermometer.svg";
+import { loginImage } from "../styles/Styles";
 
 const Registration = () => {
   //form variable for style imported
   const form = formStyle();
+  const classes = loginImage();
 
   //setting value for each textfields
   const [email, setEmail] = useState("");
@@ -74,12 +79,42 @@ const Registration = () => {
     <div>
       <Grid container>
         <Grid container item xl={12}>
+          <img
+            style={{
+              height: "66vh",
+              width: "100vw",
+              position: "absolute",
+              top: "-11%",
+              left: 0,
+              transform: "translateX(-20%)",
+              borderRadius: "12%",
+              zindex: -1,
+              opacity: 0.25,
+            }}
+            src={Thermometer}
+            alt="background-image"
+          />
+          <img
+            style={{
+              height: "66vh",
+              width: "100vw",
+              position: "absolute",
+              bottom: 0,
+              left: "70%",
+              transform: "translateX(-50%)",
+              borderRadius: "12%",
+              zindex: 1,
+              opacity: 0.25,
+            }}
+            src={Team}
+            alt="background-image"
+          />
           <Paper
             className={form.formContainer}
-            sx={{ backgroundColor: "#fcfcfc" }}
+            sx={{ backgroundColor: "#ebebeb" }}
             elevation={0}
           >
-            <Grid item sm={5} md={6} lg={5} xl={3}>
+            <Grid sx={{ zIndex: 10 }} item sm={5} md={6} lg={5} xl={3}>
               <Paper
                 className={form.form}
                 sx={{
@@ -88,6 +123,7 @@ const Registration = () => {
                   height: "70vh",
                   marginBottom: 0,
                   paddingBottom: "2em",
+                  zindex: 10,
                 }}
                 elevation={9}
               >
@@ -180,7 +216,7 @@ const Registration = () => {
                     Already got an account?
                   </Typography>
                   <Link
-                    href="/"
+                    href="login"
                     sx={{ cursor: "pointer", fontWeight: "500" }}
                     underline="hover"
                   >
