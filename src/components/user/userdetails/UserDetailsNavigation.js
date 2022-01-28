@@ -141,21 +141,6 @@ const UserDetailsNavigation = () => {
             )}
           </ListItemButton>
         </List>
-        <List sx={{ position: "absolute", bottom: 40, left: 0, width: "100%" }}>
-          <ListItemButton
-            sx={{ width: "100%", display: "flex", justifyContent: "start" }}
-          >
-            <ListItemIcon sx={{ ml: 2 }}>
-              <LogoutIcon />
-            </ListItemIcon>
-            <Typography
-              sx={{ fontSize: "1.1rem", color: "gray", ml: -2 }}
-              variant="h6"
-            >
-              Logout
-            </Typography>
-          </ListItemButton>
-        </List>
       </Paper>
     </div>
   );
