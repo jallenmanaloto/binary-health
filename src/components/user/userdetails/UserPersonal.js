@@ -150,7 +150,7 @@ const UserPersonal = () => {
     });
     const config = {
       method: "PATCH",
-      url: `http://localhost:3001/api/v1/users/update_details/${currentUser.id}`,
+      url: `https://health-users-api.herokuapp.com/api/v1/users/update_details/${currentUser.id}`,
       headers: {
         "access-token": headers.token,
         client: headers.client,
@@ -165,8 +165,10 @@ const UserPersonal = () => {
         setOpen(true);
         setSnackMessage("Details updated");
       })
-      .catch((err) => console.log(err));
-    // handleSubmitFile();
+      .catch((err) => {
+        setOpen(true);
+        setSnackMessage("Error occurred");
+      });
   };
 
   return (
