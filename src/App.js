@@ -49,7 +49,7 @@ function App() {
         }}
       >
         <Routes>
-          <Route path="/" element={<Landing />} />
+          {/* <Route path="/" element={<Landing />} /> */}
           <Route path="user" element={<Dashboard />} />
           {headers.client !== '' ? (
             <Route path="user" element={<Dashboard />} />
