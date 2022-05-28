@@ -50,7 +50,7 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="user" element={<Dashboard />} />
+          {/* <Route path="user" element={<Dashboard />} />
           {headers.client !== "" ? (
             <Route path="user" element={<Dashboard />} />
           ) : (
@@ -59,7 +59,7 @@ function App() {
           <Route path="register" element={<Registration />} />
           <Route path="login" element={<UserLogin />} />
           <Route path="user" element={<Dashboard />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} /> */}
         </Routes>
       </CurrentUser.Provider>
     </div>
